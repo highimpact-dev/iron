@@ -19,6 +19,9 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 
+# XcodeGen — project.yml is source of truth, regenerate with `xcodegen generate`
+*.xcodeproj/
+
 # Swift Package Manager
 .build/
 Packages/

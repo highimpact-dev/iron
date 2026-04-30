@@ -36,6 +36,18 @@ Iron does both. Open source. MIT. Free tier is the full app.
 - **Sync** — CloudKit (free tier), Convex (Pro AI features only)
 - **AI** — Claude Haiku (programming), Gemini Flash (form check video)
 
+## Build
+
+The Xcode project is generated from [`project.yml`](project.yml) via [XcodeGen](https://github.com/yonaskolb/XcodeGen).
+
+```bash
+brew install xcodegen
+git clone https://github.com/highimpact-dev/iron.git
+cd iron
+xcodegen generate
+open Iron.xcodeproj
+```
+
 ## Status
 
 Pre-alpha. Targeting TestFlight beta within 30 days of repo init (2026-04-30).
