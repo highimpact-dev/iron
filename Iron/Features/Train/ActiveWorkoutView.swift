@@ -63,7 +63,7 @@ struct ActiveWorkoutView: View {
         .sheet(item: $logTarget) { pe in
             LogSetSheet(
                 programExercise: pe,
-                lastWeight: lastWeight(for: pe),
+                suggestion: suggestion(for: pe),
                 onSave: { reps, weight in
                     logSet(programExercise: pe, reps: reps, weight: weight)
                     logTarget = nil
@@ -93,8 +93,31 @@ struct ActiveWorkoutView: View {
             .sorted(by: { $0.orderIndex < $1.orderIndex })
     }
 
-    private func lastWeight(for pe: ProgramExercise) -> Double? {
-        setsFor(pe).last?.weightLb
+    private func suggestion(for pe: ProgramExercise) -> WeightSuggestion {
+        if let last = setsFor(pe).last?.weightLb {
+            return .carry(last)
+        }
+        guard let exercise = pe.exercise else { return .none }
+        let exId = exercise.id
+        var descriptor = FetchDescriptor<SetEntry>(
+            predicate: #Predicate<SetEntry> { entry in
+                entry.exercise?.id == exId
+                    && entry.workout?.finishedAt != nil
+                    && entry.weightLb != nil
+            },
+            sortBy: [SortDescriptor(\.completedAt, order: .reverse)]
+        )
+        descriptor.fetchLimit = 50
+        guard let recent = try? modelContext.fetch(descriptor),
+              let mostRecentWorkoutId = recent.first?.workout?.id else {
+            return .none
+        }
+        let lastSessionSets = recent.filter { $0.workout?.id == mostRecentWorkoutId }
+        guard let topWeight = lastSessionSets.compactMap(\.weightLb).max() else {
+            return .none
+        }
+        let increment = exercise.progressionIncrementLb
+        return .progress(last: topWeight, suggested: topWeight + increment)
     }
 
     private func logSet(programExercise pe: ProgramExercise, reps: Int, weight: Double?) {

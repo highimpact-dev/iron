@@ -7,6 +7,7 @@
     "primaryMuscles": ["quads", "glutes"],
     "secondaryMuscles": ["hamstrings", "core", "lowerBack"],
     "equipment": ["barbell", "rack"],
+    "progressionIncrementLb": 10,
     "instructions": "Bar on upper traps. Brace, descend until hip crease is below the top of the knee, drive up keeping bar over midfoot."
   },
   {
@@ -17,6 +18,7 @@
     "primaryMuscles": ["glutes", "hamstrings", "lowerBack"],
     "secondaryMuscles": ["quads", "traps", "lats", "forearms"],
     "equipment": ["barbell"],
+    "progressionIncrementLb": 10,
     "instructions": "Bar over midfoot. Grip just outside knees. Squeeze chest up, push the floor away. Lock out by squeezing glutes."
   },
   {
@@ -27,6 +29,7 @@
     "primaryMuscles": ["chest", "triceps"],
     "secondaryMuscles": ["frontDelts"],
     "equipment": ["barbell", "bench", "rack"],
+    "progressionIncrementLb": 5,
     "instructions": "Tight upper back, feet planted. Lower bar to mid-chest, press over the shoulders."
   },
   {
@@ -37,6 +40,7 @@
     "primaryMuscles": ["frontDelts", "triceps"],
     "secondaryMuscles": ["sideDelts", "core"],
     "equipment": ["barbell", "rack"],
+    "progressionIncrementLb": 5,
     "instructions": "Bar at front of shoulders. Brace hard, press straight up, finish with bar over the back of the head."
   },
   {
@@ -47,6 +51,7 @@
     "primaryMuscles": ["fullBody"],
     "secondaryMuscles": ["traps", "glutes", "hamstrings", "quads"],
     "equipment": ["barbell"],
+    "progressionIncrementLb": 5,
     "instructions": "Pull from the floor, accelerate at the hip, shrug, catch in a quarter-squat with elbows high."
   },
   {
@@ -57,6 +62,7 @@
     "primaryMuscles": ["quads"],
     "secondaryMuscles": ["glutes", "core", "traps"],
     "equipment": ["barbell", "rack"],
+    "progressionIncrementLb": 10,
     "instructions": "Bar in front rack, elbows up. Stay vertical through the descent, drive up keeping torso tall."
   },
   {
@@ -67,6 +73,7 @@
     "primaryMuscles": ["hamstrings", "glutes"],
     "secondaryMuscles": ["lowerBack"],
     "equipment": ["barbell"],
+    "progressionIncrementLb": 10,
     "instructions": "Soft knees. Push hips back keeping bar against legs. Stop when hamstrings cap their stretch, drive hips forward."
   },
   {
@@ -77,6 +84,7 @@
     "primaryMuscles": ["lats", "biceps"],
     "secondaryMuscles": ["rearDelts", "core"],
     "equipment": ["bodyweight"],
+    "progressionIncrementLb": 0,
     "instructions": "Overhand grip slightly wider than shoulders. Pull chest to bar, control the descent."
   },
   {
@@ -87,6 +95,7 @@
     "primaryMuscles": ["biceps", "lats"],
     "secondaryMuscles": ["rearDelts"],
     "equipment": ["bodyweight"],
+    "progressionIncrementLb": 0,
     "instructions": "Underhand grip shoulder-width. Pull chin over the bar, control to a full hang each rep."
   },
   {
@@ -97,6 +106,7 @@
     "primaryMuscles": ["lats", "traps"],
     "secondaryMuscles": ["biceps", "rearDelts", "lowerBack"],
     "equipment": ["barbell"],
+    "progressionIncrementLb": 5,
     "instructions": "Hinge to ~45°. Pull bar to lower chest / upper abs, squeeze shoulder blades, control the negative."
   },
   {
@@ -107,6 +117,7 @@
     "primaryMuscles": ["lats"],
     "secondaryMuscles": ["biceps", "rearDelts"],
     "equipment": ["dumbbell", "bench"],
+    "progressionIncrementLb": 5,
     "instructions": "One knee on bench. Row dumbbell to hip, squeeze lat, lower under control."
   },
   {
@@ -117,6 +128,7 @@
     "primaryMuscles": ["chest", "frontDelts"],
     "secondaryMuscles": ["triceps"],
     "equipment": ["barbell", "bench"],
+    "progressionIncrementLb": 5,
     "instructions": "Bench at 30–45°. Lower bar to upper chest, press over the shoulders."
   },
   {
@@ -127,6 +139,7 @@
     "primaryMuscles": ["chest", "triceps"],
     "secondaryMuscles": ["frontDelts"],
     "equipment": ["dumbbell", "bench"],
+    "progressionIncrementLb": 5,
     "instructions": "Lower dumbbells to chest level, press up and slightly together at the top."
   },
   {
@@ -137,6 +150,7 @@
     "primaryMuscles": ["chest", "triceps"],
     "secondaryMuscles": ["frontDelts"],
     "equipment": ["bodyweight"],
+    "progressionIncrementLb": 0,
     "instructions": "Slight forward lean for chest, vertical for triceps. Lower until upper arms are parallel, press to lockout."
   },
   {
@@ -147,6 +161,7 @@
     "primaryMuscles": ["quads", "glutes"],
     "secondaryMuscles": ["hamstrings", "core"],
     "equipment": ["dumbbell"],
+    "progressionIncrementLb": 5,
     "instructions": "Step forward, drop the back knee toward the floor, drive through the front heel to the next step."
   },
   {
@@ -157,6 +172,7 @@
     "primaryMuscles": ["quads", "glutes"],
     "secondaryMuscles": ["hamstrings", "core"],
     "equipment": ["dumbbell", "bench"],
+    "progressionIncrementLb": 5,
     "instructions": "Rear foot on bench. Drop the back knee, drive through the front heel. Front shin stays roughly vertical."
   },
   {
@@ -167,6 +183,7 @@
     "primaryMuscles": ["glutes"],
     "secondaryMuscles": ["hamstrings", "core"],
     "equipment": ["barbell", "bench"],
+    "progressionIncrementLb": 10,
     "instructions": "Upper back on bench, bar across hips. Drive hips up to lockout, ribs down, squeeze glutes."
   },
   {
@@ -177,6 +194,7 @@
     "primaryMuscles": ["chest", "triceps"],
     "secondaryMuscles": ["frontDelts", "core"],
     "equipment": ["bodyweight"],
+    "progressionIncrementLb": 0,
     "instructions": "Plank position. Lower chest to floor, press to full lockout. Body in one straight line."
   },
   {
@@ -187,6 +205,7 @@
     "primaryMuscles": ["lats"],
     "secondaryMuscles": ["biceps", "rearDelts"],
     "equipment": ["cable"],
+    "progressionIncrementLb": 5,
     "instructions": "Wide overhand grip. Pull bar to upper chest, lead with the elbows, control the return."
   },
   {
@@ -197,6 +216,7 @@
     "primaryMuscles": ["lats", "traps"],
     "secondaryMuscles": ["biceps", "rearDelts"],
     "equipment": ["cable"],
+    "progressionIncrementLb": 5,
     "instructions": "Tall chest. Pull handle to lower ribs, squeeze shoulder blades, return with control."
   },
   {
@@ -207,6 +227,7 @@
     "primaryMuscles": ["biceps"],
     "secondaryMuscles": ["forearms"],
     "equipment": ["dumbbell"],
+    "progressionIncrementLb": 5,
     "instructions": "Elbows pinned to sides. Curl up, squeeze, lower under control."
   },
   {
@@ -217,6 +238,7 @@
     "primaryMuscles": ["biceps", "forearms"],
     "secondaryMuscles": [],
     "equipment": ["dumbbell"],
+    "progressionIncrementLb": 5,
     "instructions": "Neutral grip. Curl up, squeeze, lower under control."
   },
   {
@@ -227,6 +249,7 @@
     "primaryMuscles": ["triceps"],
     "secondaryMuscles": [],
     "equipment": ["cable"],
+    "progressionIncrementLb": 5,
     "instructions": "Elbows tight to sides. Push down to lockout, control the return."
   },
   {
@@ -237,6 +260,7 @@
     "primaryMuscles": ["triceps"],
     "secondaryMuscles": [],
     "equipment": ["dumbbell"],
+    "progressionIncrementLb": 5,
     "instructions": "Dumbbell overhead, elbows close. Lower behind head, extend to lockout."
   },
   {
@@ -247,6 +271,7 @@
     "primaryMuscles": ["sideDelts"],
     "secondaryMuscles": [],
     "equipment": ["dumbbell"],
+    "progressionIncrementLb": 2.5,
     "instructions": "Slight forward lean. Raise dumbbells to shoulder height, lead with the elbows."
   },
   {
@@ -257,6 +282,7 @@
     "primaryMuscles": ["rearDelts"],
     "secondaryMuscles": ["traps"],
     "equipment": ["cable"],
+    "progressionIncrementLb": 5,
     "instructions": "Rope attachment at face height. Pull rope to forehead, externally rotate, squeeze rear delts."
   },
   {
@@ -267,6 +293,7 @@
     "primaryMuscles": ["calves"],
     "secondaryMuscles": [],
     "equipment": ["bodyweight"],
+    "progressionIncrementLb": 0,
     "instructions": "Press up onto the balls of the feet, full stretch at the bottom."
   },
   {
@@ -277,6 +304,7 @@
     "primaryMuscles": ["core"],
     "secondaryMuscles": [],
     "equipment": ["bodyweight"],
+    "progressionIncrementLb": 0,
     "instructions": "Forearms down, ribs pulled toward hips, glutes squeezed. Hold one straight line."
   },
   {
@@ -287,6 +315,7 @@
     "primaryMuscles": ["core"],
     "secondaryMuscles": ["forearms"],
     "equipment": ["bodyweight"],
+    "progressionIncrementLb": 0,
     "instructions": "Hang from bar. Raise legs to parallel or higher, control the descent — no swinging."
   },
   {
@@ -297,6 +326,7 @@
     "primaryMuscles": ["fullBody"],
     "secondaryMuscles": [],
     "equipment": ["bodyweight", "treadmill"],
+    "progressionIncrementLb": 0,
     "instructions": "Steady-state, intervals, or sprints depending on the day's target."
   },
   {
@@ -307,6 +337,7 @@
     "primaryMuscles": ["fullBody"],
     "secondaryMuscles": [],
     "equipment": ["rower"],
+    "progressionIncrementLb": 0,
     "instructions": "Legs, back, arms — in that order. Recover arms, back, legs."
   },
   {
@@ -317,6 +348,7 @@
     "primaryMuscles": ["fullBody"],
     "secondaryMuscles": [],
     "equipment": ["assault"],
+    "progressionIncrementLb": 0,
     "instructions": "Drive arms and legs together. Calorie or distance targets."
   },
   {
@@ -327,6 +359,7 @@
     "primaryMuscles": ["quads", "calves"],
     "secondaryMuscles": ["fullBody"],
     "equipment": ["bike"],
+    "progressionIncrementLb": 0,
     "instructions": "Steady-state or interval work."
   },
   {
@@ -337,6 +370,7 @@
     "primaryMuscles": ["fullBody"],
     "secondaryMuscles": [],
     "equipment": ["bodyweight"],
+    "progressionIncrementLb": 0,
     "instructions": "Walk with a loaded pack. Track distance, time, and load."
   }
 ]

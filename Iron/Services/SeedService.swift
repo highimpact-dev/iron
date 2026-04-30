@@ -16,6 +16,7 @@ private struct ExerciseSeed: Decodable {
     let primaryMuscles: [Muscle]
     let secondaryMuscles: [Muscle]
     let equipment: [Equipment]
+    let progressionIncrementLb: Double?
     let instructions: String?
 }
 
@@ -76,7 +77,8 @@ enum SeedService {
                 primaryMuscles: seed.primaryMuscles,
                 secondaryMuscles: seed.secondaryMuscles,
                 equipment: seed.equipment,
-                instructions: seed.instructions
+                instructions: seed.instructions,
+                progressionIncrementLb: seed.progressionIncrementLb ?? 5.0
             )
             context.insert(exercise)
         }

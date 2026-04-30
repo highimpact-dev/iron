@@ -1,8 +1,14 @@
 import SwiftUI
 
+enum WeightSuggestion {
+    case carry(Double)
+    case progress(last: Double, suggested: Double)
+    case none
+}
+
 struct LogSetSheet: View {
     let programExercise: ProgramExercise
-    let lastWeight: Double?
+    let suggestion: WeightSuggestion
     let onSave: (Int, Double?) -> Void
     let onCancel: () -> Void
 
@@ -20,6 +26,14 @@ struct LogSetSheet: View {
 
     private var canSave: Bool {
         Int(reps) ?? 0 > 0
+    }
+
+    private var prefillWeight: Double? {
+        switch suggestion {
+        case .carry(let w): return w
+        case .progress(_, let suggested): return suggested
+        case .none: return nil
+        }
     }
 
     var body: some View {
@@ -45,7 +59,13 @@ struct LogSetSheet: View {
                             .frame(maxWidth: 120)
                     }
                 } footer: {
-                    Text("Leave weight blank for bodyweight. Target: \(targetText)")
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Leave weight blank for bodyweight. Target: \(targetText)")
+                        if let progressionHint {
+                            Text(progressionHint)
+                                .foregroundStyle(.tint)
+                        }
+                    }
                 }
             }
             .navigationTitle(name)
@@ -66,8 +86,8 @@ struct LogSetSheet: View {
             }
             .onAppear {
                 if reps.isEmpty { reps = "\(defaultReps)" }
-                if weight.isEmpty, let last = lastWeight {
-                    weight = formatWeight(last)
+                if weight.isEmpty, let pre = prefillWeight {
+                    weight = formatWeight(pre)
                 }
                 focus = .weight
             }
@@ -85,10 +105,21 @@ struct LogSetSheet: View {
     }
 
     private var weightPlaceholder: String {
-        if let last = lastWeight {
-            return formatWeight(last)
+        if let pre = prefillWeight {
+            return formatWeight(pre)
         }
         return "—"
+    }
+
+    private var progressionHint: String? {
+        switch suggestion {
+        case .progress(let last, let suggested):
+            let delta = suggested - last
+            guard delta > 0 else { return "Last session: \(formatWeight(last)) lb." }
+            return "Last session: \(formatWeight(last)) lb → suggested \(formatWeight(suggested)) lb (+\(formatWeight(delta)))."
+        case .carry, .none:
+            return nil
+        }
     }
 
     private func formatWeight(_ w: Double) -> String {

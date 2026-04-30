@@ -13,6 +13,7 @@ final class Exercise {
     var equipment: [Equipment] = []
     var instructions: String?
     var videoURL: URL?
+    var progressionIncrementLb: Double = 5.0
     var isCustom: Bool = false
     var createdAt: Date = Date()
     var deletedAt: Date?
@@ -31,6 +32,7 @@ final class Exercise {
         equipment: [Equipment] = [],
         instructions: String? = nil,
         videoURL: URL? = nil,
+        progressionIncrementLb: Double = 5.0,
         isCustom: Bool = false,
         createdAt: Date = Date(),
         deletedAt: Date? = nil
@@ -45,6 +47,7 @@ final class Exercise {
         self.equipment = equipment
         self.instructions = instructions
         self.videoURL = videoURL
+        self.progressionIncrementLb = progressionIncrementLb
         self.isCustom = isCustom
         self.createdAt = createdAt
         self.deletedAt = deletedAt
