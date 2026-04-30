@@ -41,13 +41,6 @@ targets:
       path: Iron/Iron.entitlements
       properties:
         com.apple.developer.healthkit: true
-        com.apple.developer.healthkit.access: []
-        com.apple.developer.icloud-container-identifiers:
-          - iCloud.dev.highimpact.iron
-        com.apple.developer.icloud-services:
-          - CloudDocuments
-        com.apple.developer.ubiquity-container-identifiers:
-          - iCloud.dev.highimpact.iron
 
 schemes:
   Iron:
