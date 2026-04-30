@@ -1,0 +1,79 @@
+[
+  {
+    "name": "Starting Strength",
+    "author": "Mark Rippetoe",
+    "programDescription": "The classic novice linear progression. Two alternating workouts (A and B), three days per week. Add weight every session — 5 lb upper body, 10 lb lower — until you stall. Five core lifts, simple and brutal.",
+    "isBuiltIn": true,
+    "weeksLength": null,
+    "days": [
+      {
+        "name": "Workout A",
+        "dayIndex": 0,
+        "notes": "Squat, bench, deadlift. The deadlift is one work set — pull it hard, then go home.",
+        "exercises": [
+          {
+            "exerciseSlug": "back-squat",
+            "orderIndex": 0,
+            "targetSets": 3,
+            "targetRepsMin": 5,
+            "targetRepsMax": 5,
+            "restSeconds": 240,
+            "notes": "3 work sets across after warmups. Add 10 lb next session if all reps clean."
+          },
+          {
+            "exerciseSlug": "bench-press",
+            "orderIndex": 1,
+            "targetSets": 3,
+            "targetRepsMin": 5,
+            "targetRepsMax": 5,
+            "restSeconds": 180,
+            "notes": "3 work sets across. Add 5 lb next session if all reps clean."
+          },
+          {
+            "exerciseSlug": "deadlift",
+            "orderIndex": 2,
+            "targetSets": 1,
+            "targetRepsMin": 5,
+            "targetRepsMax": 5,
+            "restSeconds": 240,
+            "notes": "One work set of 5 after warmups. Add 10 lb next session if clean."
+          }
+        ]
+      },
+      {
+        "name": "Workout B",
+        "dayIndex": 1,
+        "notes": "Squat, press, power clean. Power cleans are 5 sets of 3 — speed and intent.",
+        "exercises": [
+          {
+            "exerciseSlug": "back-squat",
+            "orderIndex": 0,
+            "targetSets": 3,
+            "targetRepsMin": 5,
+            "targetRepsMax": 5,
+            "restSeconds": 240,
+            "notes": "3 work sets across. Squat every session — yes, even today."
+          },
+          {
+            "exerciseSlug": "overhead-press",
+            "orderIndex": 1,
+            "targetSets": 3,
+            "targetRepsMin": 5,
+            "targetRepsMax": 5,
+            "restSeconds": 180,
+            "notes": "3 work sets across. Add 5 lb next session if all reps clean."
+          },
+          {
+            "exerciseSlug": "power-clean",
+            "orderIndex": 2,
+            "targetSets": 5,
+            "targetRepsMin": 3,
+            "targetRepsMax": 3,
+            "restSeconds": 180,
+            "notes": "5 sets of 3 across. Add 5 lb next session if all reps fast and clean. Sub barbell rows once linear progression slows."
+          }
+        ]
+      }
+    ]
+  }
+]

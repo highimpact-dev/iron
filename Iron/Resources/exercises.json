@@ -1,0 +1,342 @@
+[
+  {
+    "name": "Back Squat",
+    "slug": "back-squat",
+    "category": "compound",
+    "movementPattern": "squat",
+    "primaryMuscles": ["quads", "glutes"],
+    "secondaryMuscles": ["hamstrings", "core", "lowerBack"],
+    "equipment": ["barbell", "rack"],
+    "instructions": "Bar on upper traps. Brace, descend until hip crease is below the top of the knee, drive up keeping bar over midfoot."
+  },
+  {
+    "name": "Deadlift",
+    "slug": "deadlift",
+    "category": "compound",
+    "movementPattern": "hinge",
+    "primaryMuscles": ["glutes", "hamstrings", "lowerBack"],
+    "secondaryMuscles": ["quads", "traps", "lats", "forearms"],
+    "equipment": ["barbell"],
+    "instructions": "Bar over midfoot. Grip just outside knees. Squeeze chest up, push the floor away. Lock out by squeezing glutes."
+  },
+  {
+    "name": "Bench Press",
+    "slug": "bench-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": ["chest", "triceps"],
+    "secondaryMuscles": ["frontDelts"],
+    "equipment": ["barbell", "bench", "rack"],
+    "instructions": "Tight upper back, feet planted. Lower bar to mid-chest, press over the shoulders."
+  },
+  {
+    "name": "Overhead Press",
+    "slug": "overhead-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": ["frontDelts", "triceps"],
+    "secondaryMuscles": ["sideDelts", "core"],
+    "equipment": ["barbell", "rack"],
+    "instructions": "Bar at front of shoulders. Brace hard, press straight up, finish with bar over the back of the head."
+  },
+  {
+    "name": "Power Clean",
+    "slug": "power-clean",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": ["fullBody"],
+    "secondaryMuscles": ["traps", "glutes", "hamstrings", "quads"],
+    "equipment": ["barbell"],
+    "instructions": "Pull from the floor, accelerate at the hip, shrug, catch in a quarter-squat with elbows high."
+  },
+  {
+    "name": "Front Squat",
+    "slug": "front-squat",
+    "category": "compound",
+    "movementPattern": "squat",
+    "primaryMuscles": ["quads"],
+    "secondaryMuscles": ["glutes", "core", "traps"],
+    "equipment": ["barbell", "rack"],
+    "instructions": "Bar in front rack, elbows up. Stay vertical through the descent, drive up keeping torso tall."
+  },
+  {
+    "name": "Romanian Deadlift",
+    "slug": "romanian-deadlift",
+    "category": "compound",
+    "movementPattern": "hinge",
+    "primaryMuscles": ["hamstrings", "glutes"],
+    "secondaryMuscles": ["lowerBack"],
+    "equipment": ["barbell"],
+    "instructions": "Soft knees. Push hips back keeping bar against legs. Stop when hamstrings cap their stretch, drive hips forward."
+  },
+  {
+    "name": "Pull-Up",
+    "slug": "pull-up",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": ["lats", "biceps"],
+    "secondaryMuscles": ["rearDelts", "core"],
+    "equipment": ["bodyweight"],
+    "instructions": "Overhand grip slightly wider than shoulders. Pull chest to bar, control the descent."
+  },
+  {
+    "name": "Chin-Up",
+    "slug": "chin-up",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": ["biceps", "lats"],
+    "secondaryMuscles": ["rearDelts"],
+    "equipment": ["bodyweight"],
+    "instructions": "Underhand grip shoulder-width. Pull chin over the bar, control to a full hang each rep."
+  },
+  {
+    "name": "Barbell Row",
+    "slug": "barbell-row",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": ["lats", "traps"],
+    "secondaryMuscles": ["biceps", "rearDelts", "lowerBack"],
+    "equipment": ["barbell"],
+    "instructions": "Hinge to ~45°. Pull bar to lower chest / upper abs, squeeze shoulder blades, control the negative."
+  },
+  {
+    "name": "Dumbbell Row",
+    "slug": "dumbbell-row",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["biceps", "rearDelts"],
+    "equipment": ["dumbbell", "bench"],
+    "instructions": "One knee on bench. Row dumbbell to hip, squeeze lat, lower under control."
+  },
+  {
+    "name": "Incline Bench Press",
+    "slug": "incline-bench-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": ["chest", "frontDelts"],
+    "secondaryMuscles": ["triceps"],
+    "equipment": ["barbell", "bench"],
+    "instructions": "Bench at 30–45°. Lower bar to upper chest, press over the shoulders."
+  },
+  {
+    "name": "Dumbbell Bench Press",
+    "slug": "dumbbell-bench-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": ["chest", "triceps"],
+    "secondaryMuscles": ["frontDelts"],
+    "equipment": ["dumbbell", "bench"],
+    "instructions": "Lower dumbbells to chest level, press up and slightly together at the top."
+  },
+  {
+    "name": "Dip",
+    "slug": "dip",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": ["chest", "triceps"],
+    "secondaryMuscles": ["frontDelts"],
+    "equipment": ["bodyweight"],
+    "instructions": "Slight forward lean for chest, vertical for triceps. Lower until upper arms are parallel, press to lockout."
+  },
+  {
+    "name": "Walking Lunge",
+    "slug": "walking-lunge",
+    "category": "compound",
+    "movementPattern": "squat",
+    "primaryMuscles": ["quads", "glutes"],
+    "secondaryMuscles": ["hamstrings", "core"],
+    "equipment": ["dumbbell"],
+    "instructions": "Step forward, drop the back knee toward the floor, drive through the front heel to the next step."
+  },
+  {
+    "name": "Bulgarian Split Squat",
+    "slug": "bulgarian-split-squat",
+    "category": "compound",
+    "movementPattern": "squat",
+    "primaryMuscles": ["quads", "glutes"],
+    "secondaryMuscles": ["hamstrings", "core"],
+    "equipment": ["dumbbell", "bench"],
+    "instructions": "Rear foot on bench. Drop the back knee, drive through the front heel. Front shin stays roughly vertical."
+  },
+  {
+    "name": "Hip Thrust",
+    "slug": "hip-thrust",
+    "category": "compound",
+    "movementPattern": "hinge",
+    "primaryMuscles": ["glutes"],
+    "secondaryMuscles": ["hamstrings", "core"],
+    "equipment": ["barbell", "bench"],
+    "instructions": "Upper back on bench, bar across hips. Drive hips up to lockout, ribs down, squeeze glutes."
+  },
+  {
+    "name": "Push-Up",
+    "slug": "push-up",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": ["chest", "triceps"],
+    "secondaryMuscles": ["frontDelts", "core"],
+    "equipment": ["bodyweight"],
+    "instructions": "Plank position. Lower chest to floor, press to full lockout. Body in one straight line."
+  },
+  {
+    "name": "Lat Pulldown",
+    "slug": "lat-pulldown",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": ["lats"],
+    "secondaryMuscles": ["biceps", "rearDelts"],
+    "equipment": ["cable"],
+    "instructions": "Wide overhand grip. Pull bar to upper chest, lead with the elbows, control the return."
+  },
+  {
+    "name": "Seated Cable Row",
+    "slug": "seated-cable-row",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": ["lats", "traps"],
+    "secondaryMuscles": ["biceps", "rearDelts"],
+    "equipment": ["cable"],
+    "instructions": "Tall chest. Pull handle to lower ribs, squeeze shoulder blades, return with control."
+  },
+  {
+    "name": "Bicep Curl",
+    "slug": "bicep-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": ["biceps"],
+    "secondaryMuscles": ["forearms"],
+    "equipment": ["dumbbell"],
+    "instructions": "Elbows pinned to sides. Curl up, squeeze, lower under control."
+  },
+  {
+    "name": "Hammer Curl",
+    "slug": "hammer-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": ["biceps", "forearms"],
+    "secondaryMuscles": [],
+    "equipment": ["dumbbell"],
+    "instructions": "Neutral grip. Curl up, squeeze, lower under control."
+  },
+  {
+    "name": "Tricep Pushdown",
+    "slug": "tricep-pushdown",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": ["triceps"],
+    "secondaryMuscles": [],
+    "equipment": ["cable"],
+    "instructions": "Elbows tight to sides. Push down to lockout, control the return."
+  },
+  {
+    "name": "Overhead Tricep Extension",
+    "slug": "overhead-tricep-extension",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": ["triceps"],
+    "secondaryMuscles": [],
+    "equipment": ["dumbbell"],
+    "instructions": "Dumbbell overhead, elbows close. Lower behind head, extend to lockout."
+  },
+  {
+    "name": "Lateral Raise",
+    "slug": "lateral-raise",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": ["sideDelts"],
+    "secondaryMuscles": [],
+    "equipment": ["dumbbell"],
+    "instructions": "Slight forward lean. Raise dumbbells to shoulder height, lead with the elbows."
+  },
+  {
+    "name": "Face Pull",
+    "slug": "face-pull",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": ["rearDelts"],
+    "secondaryMuscles": ["traps"],
+    "equipment": ["cable"],
+    "instructions": "Rope attachment at face height. Pull rope to forehead, externally rotate, squeeze rear delts."
+  },
+  {
+    "name": "Calf Raise",
+    "slug": "calf-raise",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": ["calves"],
+    "secondaryMuscles": [],
+    "equipment": ["bodyweight"],
+    "instructions": "Press up onto the balls of the feet, full stretch at the bottom."
+  },
+  {
+    "name": "Plank",
+    "slug": "plank",
+    "category": "isolation",
+    "movementPattern": "core",
+    "primaryMuscles": ["core"],
+    "secondaryMuscles": [],
+    "equipment": ["bodyweight"],
+    "instructions": "Forearms down, ribs pulled toward hips, glutes squeezed. Hold one straight line."
+  },
+  {
+    "name": "Hanging Leg Raise",
+    "slug": "hanging-leg-raise",
+    "category": "isolation",
+    "movementPattern": "core",
+    "primaryMuscles": ["core"],
+    "secondaryMuscles": ["forearms"],
+    "equipment": ["bodyweight"],
+    "instructions": "Hang from bar. Raise legs to parallel or higher, control the descent — no swinging."
+  },
+  {
+    "name": "Run",
+    "slug": "run",
+    "category": "conditioning",
+    "movementPattern": "conditioning",
+    "primaryMuscles": ["fullBody"],
+    "secondaryMuscles": [],
+    "equipment": ["bodyweight", "treadmill"],
+    "instructions": "Steady-state, intervals, or sprints depending on the day's target."
+  },
+  {
+    "name": "Row Erg",
+    "slug": "row-erg",
+    "category": "conditioning",
+    "movementPattern": "conditioning",
+    "primaryMuscles": ["fullBody"],
+    "secondaryMuscles": [],
+    "equipment": ["rower"],
+    "instructions": "Legs, back, arms — in that order. Recover arms, back, legs."
+  },
+  {
+    "name": "Air Bike",
+    "slug": "air-bike",
+    "category": "conditioning",
+    "movementPattern": "conditioning",
+    "primaryMuscles": ["fullBody"],
+    "secondaryMuscles": [],
+    "equipment": ["assault"],
+    "instructions": "Drive arms and legs together. Calorie or distance targets."
+  },
+  {
+    "name": "Bike",
+    "slug": "bike",
+    "category": "conditioning",
+    "movementPattern": "conditioning",
+    "primaryMuscles": ["quads", "calves"],
+    "secondaryMuscles": ["fullBody"],
+    "equipment": ["bike"],
+    "instructions": "Steady-state or interval work."
+  },
+  {
+    "name": "Ruck",
+    "slug": "ruck",
+    "category": "conditioning",
+    "movementPattern": "conditioning",
+    "primaryMuscles": ["fullBody"],
+    "secondaryMuscles": [],
+    "equipment": ["bodyweight"],
+    "instructions": "Walk with a loaded pack. Track distance, time, and load."
+  }
+]

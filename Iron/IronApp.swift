@@ -25,6 +25,9 @@ struct IronApp: App {
     var body: some Scene {
         WindowGroup {
             RootTabView()
+                .task {
+                    SeedService.seedIfNeeded(context: modelContainer.mainContext)
+                }
         }
         .modelContainer(modelContainer)
     }
