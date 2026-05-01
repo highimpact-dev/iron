@@ -131,6 +131,12 @@ struct ActiveWorkoutView: View {
         didFireRestHaptic = false
         beepedAt.removeAll()
         RestNotificationService.schedule(endsAt: endsAt, exerciseName: name)
+        RestLiveActivityService.start(
+            startedAt: started,
+            endsAt: endsAt,
+            totalSeconds: seconds,
+            exerciseName: name
+        )
     }
 
     private func addRest(seconds: Int) {
@@ -146,6 +152,11 @@ struct ActiveWorkoutView: View {
         didFireRestHaptic = false
         beepedAt.removeAll()
         RestNotificationService.schedule(endsAt: newEndsAt, exerciseName: current.exerciseName)
+        RestLiveActivityService.update(
+            startedAt: current.startedAt,
+            endsAt: newEndsAt,
+            totalSeconds: current.totalSeconds + seconds
+        )
     }
 
     private func dismissRest() {
@@ -154,6 +165,7 @@ struct ActiveWorkoutView: View {
         didFireRestHaptic = false
         beepedAt.removeAll()
         RestNotificationService.cancel()
+        RestLiveActivityService.end()
     }
 
     private func recordActualRest() {
@@ -240,6 +252,7 @@ struct ActiveWorkoutView: View {
         if rest != nil { recordActualRest() }
         rest = nil
         RestNotificationService.cancel()
+        RestLiveActivityService.end()
         workout.finishedAt = Date()
         try? modelContext.save()
     }

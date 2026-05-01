@@ -22,6 +22,9 @@ targets:
     platform: iOS
     sources:
       - path: Iron
+      - path: Shared
+    dependencies:
+      - target: IronWidget
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: dev.highimpact.iron
@@ -37,10 +40,35 @@ targets:
         INFOPLIST_KEY_NSHealthShareUsageDescription: "Iron reads your workouts, heart rate, and body metrics from Health to track lifting and conditioning progress."
         INFOPLIST_KEY_NSHealthUpdateUsageDescription: "Iron writes completed workouts back to Health so your training is in one place."
         INFOPLIST_KEY_NSMotionUsageDescription: "Iron uses motion data to detect rest periods and rep tempo."
+        INFOPLIST_KEY_NSSupportsLiveActivities: YES
+        INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates: YES
     entitlements:
       path: Iron/Iron.entitlements
       properties:
         com.apple.developer.healthkit: true
+
+  IronWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: IronWidget
+      - path: Shared
+    info:
+      path: IronWidget/Info.plist
+      properties:
+        CFBundleDisplayName: Iron
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.highimpact.iron.widget
+        PRODUCT_NAME: IronWidget
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SUPPORTS_MACCATALYST: NO
+        ENABLE_PREVIEWS: YES
+        SKIP_INSTALL: YES
 
 schemes:
   Iron:
