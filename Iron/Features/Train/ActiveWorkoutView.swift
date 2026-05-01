@@ -1,15 +1,29 @@
 import SwiftUI
 import SwiftData
+#if canImport(UIKit)
+import UIKit
+#endif
 
 struct ActiveWorkoutView: View {
     @Environment(\.modelContext) private var modelContext
     @Bindable var workout: Workout
 
     @State private var elapsed: TimeInterval = 0
+    @State private var now: Date = Date()
     @State private var logTarget: ProgramExercise?
     @State private var showFinishConfirm = false
+    @State private var rest: RestState?
+    @State private var didFireRestHaptic = false
 
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+
+    struct RestState {
+        let endsAt: Date
+        let totalSeconds: Int
+        let exerciseName: String
+        let previousSetId: UUID?
+        let startedAt: Date
+    }
 
     private var orderedProgramExercises: [ProgramExercise] {
         (workout.sourceProgramDay?.exercises ?? [])
@@ -78,11 +92,79 @@ struct ActiveWorkoutView: View {
         } message: {
             Text("This marks the workout complete. You can still view it in History.")
         }
-        .onReceive(timer) { _ in
-            elapsed = Date().timeIntervalSince(workout.startedAt)
+        .safeAreaInset(edge: .bottom) {
+            if let rest {
+                RestTimerBar(
+                    rest: rest,
+                    now: now,
+                    onAddTime: { addRest(seconds: 15) },
+                    onSkip: { dismissRest() }
+                )
+            }
+        }
+        .onReceive(timer) { tick in
+            now = tick
+            elapsed = tick.timeIntervalSince(workout.startedAt)
+            checkRestExpiration()
         }
         .onAppear {
+            now = Date()
             elapsed = Date().timeIntervalSince(workout.startedAt)
+        }
+    }
+
+    private func startRest(for pe: ProgramExercise, previousSet: SetEntry) {
+        let seconds = max(0, pe.restSeconds)
+        guard seconds > 0 else { return }
+        let started = Date()
+        rest = RestState(
+            endsAt: started.addingTimeInterval(TimeInterval(seconds)),
+            totalSeconds: seconds,
+            exerciseName: pe.exercise?.name ?? "Rest",
+            previousSetId: previousSet.id,
+            startedAt: started
+        )
+        didFireRestHaptic = false
+    }
+
+    private func addRest(seconds: Int) {
+        guard let current = rest else { return }
+        rest = RestState(
+            endsAt: current.endsAt.addingTimeInterval(TimeInterval(seconds)),
+            totalSeconds: current.totalSeconds + seconds,
+            exerciseName: current.exerciseName,
+            previousSetId: current.previousSetId,
+            startedAt: current.startedAt
+        )
+        didFireRestHaptic = false
+    }
+
+    private func dismissRest() {
+        recordActualRest()
+        rest = nil
+        didFireRestHaptic = false
+    }
+
+    private func recordActualRest() {
+        guard let current = rest, let setId = current.previousSetId else { return }
+        let actual = max(0, Int(Date().timeIntervalSince(current.startedAt)))
+        let descriptor = FetchDescriptor<SetEntry>(
+            predicate: #Predicate<SetEntry> { $0.id == setId }
+        )
+        if let match = try? modelContext.fetch(descriptor).first {
+            match.restSeconds = actual
+            try? modelContext.save()
+        }
+    }
+
+    private func checkRestExpiration() {
+        guard let rest else { return }
+        if !didFireRestHaptic, now >= rest.endsAt {
+            didFireRestHaptic = true
+            #if canImport(UIKit)
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+            #endif
         }
     }
 
@@ -122,6 +204,7 @@ struct ActiveWorkoutView: View {
 
     private func logSet(programExercise pe: ProgramExercise, reps: Int, weight: Double?) {
         guard let exercise = pe.exercise else { return }
+        if rest != nil { recordActualRest() }
         let existing = setsFor(pe)
         let entry = SetEntry(
             orderIndex: existing.count,
@@ -134,9 +217,12 @@ struct ActiveWorkoutView: View {
         )
         modelContext.insert(entry)
         try? modelContext.save()
+        startRest(for: pe, previousSet: entry)
     }
 
     private func finishWorkout() {
+        if rest != nil { recordActualRest() }
+        rest = nil
         workout.finishedAt = Date()
         try? modelContext.save()
     }
@@ -219,5 +305,81 @@ private struct ExerciseSection: View {
         w.truncatingRemainder(dividingBy: 1) == 0
             ? String(format: "%.0f", w)
             : String(format: "%.1f", w)
+    }
+}
+
+private struct RestTimerBar: View {
+    let rest: ActiveWorkoutView.RestState
+    let now: Date
+    let onAddTime: () -> Void
+    let onSkip: () -> Void
+
+    private var remaining: Int {
+        max(0, Int(rest.endsAt.timeIntervalSince(now).rounded(.up)))
+    }
+
+    private var isDone: Bool { now >= rest.endsAt }
+
+    private var progress: Double {
+        guard rest.totalSeconds > 0 else { return 1 }
+        let elapsed = Double(rest.totalSeconds) - rest.endsAt.timeIntervalSince(now)
+        return min(1, max(0, elapsed / Double(rest.totalSeconds)))
+    }
+
+    private var formatted: String {
+        let s = remaining
+        return String(format: "%d:%02d", s / 60, s % 60)
+    }
+
+    var body: some View {
+        VStack(spacing: 8) {
+            HStack(alignment: .firstTextBaseline) {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(isDone ? "Rest complete" : "Resting")
+                        .font(.caption.weight(.semibold))
+                        .foregroundStyle(isDone ? .green : .secondary)
+                    Text(rest.exerciseName)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Text(formatted)
+                    .font(.system(.title2, design: .monospaced).weight(.semibold))
+                    .foregroundStyle(isDone ? .green : .primary)
+                    .contentTransition(.numericText(countsDown: true))
+            }
+            ProgressView(value: progress)
+                .tint(isDone ? .green : .accentColor)
+            HStack(spacing: 12) {
+                Button {
+                    onAddTime()
+                } label: {
+                    Label("+15s", systemImage: "plus.circle")
+                        .font(.callout.weight(.medium))
+                }
+                .buttonStyle(.bordered)
+                .controlSize(.small)
+
+                Spacer()
+
+                Button(role: isDone ? .none : .cancel) {
+                    onSkip()
+                } label: {
+                    Text(isDone ? "Done" : "Skip")
+                        .font(.callout.weight(.semibold))
+                }
+                .buttonStyle(.borderedProminent)
+                .controlSize(.small)
+                .tint(isDone ? .green : .accentColor)
+            }
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 12)
+        .background(.regularMaterial)
+        .overlay(alignment: .top) {
+            Rectangle()
+                .fill(.separator)
+                .frame(height: 0.5)
+        }
     }
 }
