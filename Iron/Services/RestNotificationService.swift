@@ -4,6 +4,8 @@ import UserNotifications
 @MainActor
 enum RestNotificationService {
     private static let identifier = "iron.rest-complete"
+    private static let countdownLeadSeconds: TimeInterval = 10
+    private static let soundName = UNNotificationSoundName("countdown.caf")
 
     static func requestAuthorizationIfNeeded() async {
         let center = UNUserNotificationCenter.current()
@@ -14,13 +16,14 @@ enum RestNotificationService {
 
     static func schedule(endsAt: Date, exerciseName: String) {
         cancel()
-        let interval = endsAt.timeIntervalSinceNow
+        let fireAt = endsAt.addingTimeInterval(-countdownLeadSeconds)
+        let interval = fireAt.timeIntervalSinceNow
         guard interval > 0 else { return }
 
         let content = UNMutableNotificationContent()
-        content.title = "Rest complete"
-        content.body = "Back to \(exerciseName) — time to lift."
-        content.sound = .default
+        content.title = "Almost up"
+        content.body = "Back to \(exerciseName) — 10 seconds."
+        content.sound = UNNotificationSound(named: soundName)
 
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: interval, repeats: false)
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)

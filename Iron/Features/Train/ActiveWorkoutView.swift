@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import AudioToolbox
 #if canImport(UIKit)
 import UIKit
 #endif
@@ -14,6 +15,7 @@ struct ActiveWorkoutView: View {
     @State private var showFinishConfirm = false
     @State private var rest: RestState?
     @State private var didFireRestHaptic = false
+    @State private var beepedAt: Set<Int> = []
 
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
@@ -127,6 +129,7 @@ struct ActiveWorkoutView: View {
             startedAt: started
         )
         didFireRestHaptic = false
+        beepedAt.removeAll()
         RestNotificationService.schedule(endsAt: endsAt, exerciseName: name)
     }
 
@@ -141,6 +144,7 @@ struct ActiveWorkoutView: View {
             startedAt: current.startedAt
         )
         didFireRestHaptic = false
+        beepedAt.removeAll()
         RestNotificationService.schedule(endsAt: newEndsAt, exerciseName: current.exerciseName)
     }
 
@@ -148,6 +152,7 @@ struct ActiveWorkoutView: View {
         recordActualRest()
         rest = nil
         didFireRestHaptic = false
+        beepedAt.removeAll()
         RestNotificationService.cancel()
     }
 
@@ -165,6 +170,11 @@ struct ActiveWorkoutView: View {
 
     private func checkRestExpiration() {
         guard let rest else { return }
+        let remaining = Int(rest.endsAt.timeIntervalSince(now).rounded(.up))
+        if remaining > 0, remaining <= 10, !beepedAt.contains(remaining) {
+            beepedAt.insert(remaining)
+            AudioServicesPlaySystemSound(1057)
+        }
         if !didFireRestHaptic, now >= rest.endsAt {
             didFireRestHaptic = true
             #if canImport(UIKit)
