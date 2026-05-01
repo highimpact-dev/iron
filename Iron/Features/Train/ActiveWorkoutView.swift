@@ -117,32 +117,38 @@ struct ActiveWorkoutView: View {
         let seconds = max(0, pe.restSeconds)
         guard seconds > 0 else { return }
         let started = Date()
+        let endsAt = started.addingTimeInterval(TimeInterval(seconds))
+        let name = pe.exercise?.name ?? "Rest"
         rest = RestState(
-            endsAt: started.addingTimeInterval(TimeInterval(seconds)),
+            endsAt: endsAt,
             totalSeconds: seconds,
-            exerciseName: pe.exercise?.name ?? "Rest",
+            exerciseName: name,
             previousSetId: previousSet.id,
             startedAt: started
         )
         didFireRestHaptic = false
+        RestNotificationService.schedule(endsAt: endsAt, exerciseName: name)
     }
 
     private func addRest(seconds: Int) {
         guard let current = rest else { return }
+        let newEndsAt = current.endsAt.addingTimeInterval(TimeInterval(seconds))
         rest = RestState(
-            endsAt: current.endsAt.addingTimeInterval(TimeInterval(seconds)),
+            endsAt: newEndsAt,
             totalSeconds: current.totalSeconds + seconds,
             exerciseName: current.exerciseName,
             previousSetId: current.previousSetId,
             startedAt: current.startedAt
         )
         didFireRestHaptic = false
+        RestNotificationService.schedule(endsAt: newEndsAt, exerciseName: current.exerciseName)
     }
 
     private func dismissRest() {
         recordActualRest()
         rest = nil
         didFireRestHaptic = false
+        RestNotificationService.cancel()
     }
 
     private func recordActualRest() {
@@ -223,6 +229,7 @@ struct ActiveWorkoutView: View {
     private func finishWorkout() {
         if rest != nil { recordActualRest() }
         rest = nil
+        RestNotificationService.cancel()
         workout.finishedAt = Date()
         try? modelContext.save()
     }

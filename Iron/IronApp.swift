@@ -27,6 +27,7 @@ struct IronApp: App {
             RootTabView()
                 .task {
                     SeedService.seedIfNeeded(context: modelContainer.mainContext)
+                    await RestNotificationService.requestAuthorizationIfNeeded()
                 }
         }
         .modelContainer(modelContainer)
