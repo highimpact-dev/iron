@@ -2,7 +2,11 @@ import SwiftUI
 import SwiftData
 
 struct WorkoutDetailView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
     @Bindable var workout: Workout
+
+    @State private var showDeleteConfirm = false
 
     private var titleText: String {
         if let name = workout.name, !name.isEmpty { return name }
@@ -102,6 +106,26 @@ struct WorkoutDetailView: View {
         }
         .navigationTitle(titleText)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(role: .destructive) {
+                    showDeleteConfirm = true
+                } label: {
+                    Image(systemName: "trash")
+                }
+                .tint(.red)
+            }
+        }
+        .alert("Delete this workout?", isPresented: $showDeleteConfirm) {
+            Button("Delete", role: .destructive) {
+                modelContext.delete(workout)
+                try? modelContext.save()
+                dismiss()
+            }
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("This permanently removes the session and all its sets.")
+        }
     }
 
     private func formatWeight(_ w: Double) -> String {

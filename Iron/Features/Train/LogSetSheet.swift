@@ -65,6 +65,11 @@ struct LogSetSheet: View {
                             Text(progressionHint)
                                 .foregroundStyle(.tint)
                         }
+                        if let plateText {
+                            Text(plateText)
+                                .font(.caption.monospacedDigit())
+                                .foregroundStyle(.secondary)
+                        }
                     }
                 }
             }
@@ -109,6 +114,25 @@ struct LogSetSheet: View {
             return formatWeight(pre)
         }
         return "—"
+    }
+
+    private var usesBarbell: Bool {
+        programExercise.exercise?.equipment.contains(.barbell) == true
+    }
+
+    private var effectiveWeight: Double? {
+        if let typed = Double(weight), typed > 0 { return typed }
+        return prefillWeight
+    }
+
+    private var plateText: String? {
+        guard usesBarbell, let w = effectiveWeight, w > PlateCalculator.standardBarLb else {
+            return nil
+        }
+        guard let loads = PlateCalculator.plates(targetLb: w) else {
+            return "Bar 45 + \(formatWeight((w - PlateCalculator.standardBarLb) / 2)) per side (non-standard)"
+        }
+        return "Per side: \(PlateCalculator.breakdownText(for: loads))"
     }
 
     private var progressionHint: String? {

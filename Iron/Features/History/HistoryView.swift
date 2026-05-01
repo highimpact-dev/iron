@@ -2,12 +2,16 @@ import SwiftUI
 import SwiftData
 
 struct HistoryView: View {
+    @Environment(\.modelContext) private var modelContext
+
     @Query(
         filter: #Predicate<Workout> { $0.finishedAt != nil && $0.deletedAt == nil },
         sort: \Workout.finishedAt,
         order: .reverse
     )
     private var workouts: [Workout]
+
+    @State private var pendingDelete: Workout?
 
     var body: some View {
         NavigationStack {
@@ -26,6 +30,13 @@ struct HistoryView: View {
                                     NavigationLink(value: workout) {
                                         WorkoutRow(workout: workout)
                                     }
+                                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                        Button(role: .destructive) {
+                                            pendingDelete = workout
+                                        } label: {
+                                            Label("Delete", systemImage: "trash")
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -36,7 +47,30 @@ struct HistoryView: View {
             .navigationDestination(for: Workout.self) { workout in
                 WorkoutDetailView(workout: workout)
             }
+            .alert(
+                "Delete this workout?",
+                isPresented: Binding(
+                    get: { pendingDelete != nil },
+                    set: { if !$0 { pendingDelete = nil } }
+                ),
+                presenting: pendingDelete
+            ) { workout in
+                Button("Delete", role: .destructive) {
+                    delete(workout)
+                    pendingDelete = nil
+                }
+                Button("Cancel", role: .cancel) {
+                    pendingDelete = nil
+                }
+            } message: { _ in
+                Text("This permanently removes the session and all its sets.")
+            }
         }
+    }
+
+    private func delete(_ workout: Workout) {
+        modelContext.delete(workout)
+        try? modelContext.save()
     }
 
     private var groupedWorkouts: [(key: String, value: [Workout])] {
