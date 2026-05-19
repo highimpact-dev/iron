@@ -20,6 +20,9 @@ final class Workout {
     @Relationship(deleteRule: .cascade, inverse: \ConditioningEntry.workout)
     var conditioningEntries: [ConditioningEntry] = []
 
+    @Relationship(deleteRule: .cascade)
+    var additionalExercises: [ProgramExercise] = []
+
     init(
         id: UUID = UUID(),
         startedAt: Date = Date(),

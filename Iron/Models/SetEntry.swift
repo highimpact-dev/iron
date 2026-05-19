@@ -11,6 +11,7 @@ final class SetEntry {
     var weightLb: Double?
     var rpe: Double?
     var rir: Int?
+    var side: SetSide?
     var restSeconds: Int?
     var notes: String?
     var completedAt: Date = Date()
@@ -26,6 +27,7 @@ final class SetEntry {
         weightLb: Double? = nil,
         rpe: Double? = nil,
         rir: Int? = nil,
+        side: SetSide? = nil,
         restSeconds: Int? = nil,
         notes: String? = nil,
         completedAt: Date = Date(),
@@ -40,10 +42,18 @@ final class SetEntry {
         self.weightLb = weightLb
         self.rpe = rpe
         self.rir = rir
+        self.side = side
         self.restSeconds = restSeconds
         self.notes = notes
         self.completedAt = completedAt
         self.workout = workout
         self.exercise = exercise
+    }
+}
+
+extension SetEntry {
+    static func delete(_ set: SetEntry, from workout: Workout, in modelContext: ModelContext) {
+        modelContext.delete(set)
+        try? modelContext.save()
     }
 }

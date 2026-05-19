@@ -3,6 +3,7 @@ options:
   bundleIdPrefix: dev.highimpact
   deploymentTarget:
     iOS: "18.0"
+    watchOS: "10.0"
   developmentLanguage: en
   createIntermediateGroups: true
   generateEmptyDirectories: true
@@ -13,6 +14,8 @@ settings:
     SWIFT_VERSION: "6.0"
     MARKETING_VERSION: "0.1.0"
     CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: T58KNKQF45
+    CODE_SIGN_STYLE: Automatic
     ENABLE_USER_SCRIPT_SANDBOXING: YES
     SWIFT_STRICT_CONCURRENCY: complete
 
@@ -25,6 +28,8 @@ targets:
       - path: Shared
     dependencies:
       - target: IronWidget
+      - target: IronWatch
+        embed: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: dev.highimpact.iron
@@ -70,14 +75,44 @@ targets:
         ENABLE_PREVIEWS: YES
         SKIP_INSTALL: YES
 
+  IronWatch:
+    type: application
+    platform: watchOS
+    sources:
+      - path: IronWatch
+      - path: Shared/WatchWorkoutMessages.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.highimpact.iron.watch
+        PRODUCT_NAME: IronWatch
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_WKApplication: YES
+        INFOPLIST_KEY_WKCompanionAppBundleIdentifier: dev.highimpact.iron
+        INFOPLIST_KEY_CFBundleDisplayName: Iron
+        ENABLE_PREVIEWS: YES
+
 schemes:
   Iron:
     build:
       targets:
         Iron: all
+        IronWatch: all
     run:
       config: Debug
     test:
+      config: Debug
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+
+  IronWatch:
+    build:
+      targets:
+        IronWatch: all
+    run:
       config: Debug
     profile:
       config: Release

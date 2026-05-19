@@ -7,7 +7,7 @@ struct IronApp: App {
 
     init() {
         do {
-            let schema = Schema(IronSchemaV1.models)
+            let schema = Schema(IronSchemaV2.models)
             let config = ModelConfiguration(
                 schema: schema,
                 isStoredInMemoryOnly: false
@@ -27,6 +27,7 @@ struct IronApp: App {
             RootTabView()
                 .task {
                     SeedService.seedIfNeeded(context: modelContainer.mainContext)
+                    WatchConnectivityService.shared.configure(modelContext: modelContainer.mainContext)
                     await RestNotificationService.requestAuthorizationIfNeeded()
                 }
         }

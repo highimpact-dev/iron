@@ -9,6 +9,7 @@ struct TrainView: View {
     private var programs: [Program]
 
     @State private var path = NavigationPath()
+    @State private var isCreatingProgram = false
 
     var body: some View {
         NavigationStack(path: $path) {
@@ -20,12 +21,28 @@ struct TrainView: View {
                 }
             }
             .navigationTitle("Train")
+            .navigationDestination(for: Program.self) { program in
+                ProgramDetailView(program: program)
+            }
             .navigationDestination(for: ProgramDay.self) { day in
                 ProgramDayDetailView(day: day) { workout in
                     path = NavigationPath()
                     modelContext.insert(workout)
                     try? modelContext.save()
                 }
+            }
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        isCreatingProgram = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                    .accessibilityLabel("Create program")
+                }
+            }
+            .sheet(isPresented: $isCreatingProgram) {
+                ProgramEditorView(mode: .create)
             }
         }
     }
@@ -41,7 +58,9 @@ struct TrainView: View {
             } else {
                 Section("Programs") {
                     ForEach(programs) { program in
-                        ProgramRow(program: program)
+                        NavigationLink(value: program) {
+                            ProgramRow(program: program)
+                        }
                     }
                 }
             }
@@ -53,40 +72,32 @@ private struct ProgramRow: View {
     let program: Program
 
     var body: some View {
-        DisclosureGroup {
-            ForEach(program.days.sorted(by: { $0.dayIndex < $1.dayIndex })) { day in
-                NavigationLink(value: day) {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(day.name)
-                            .font(.body)
-                        Text(exerciseSummary(day))
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                    }
+        VStack(alignment: .leading, spacing: 4) {
+            Text(program.name)
+                .font(.headline)
+            if let author = program.author {
+                Text(author)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+            HStack(spacing: 10) {
+                if let weeks = program.weeksLength {
+                    Label("\(weeks) wk", systemImage: "calendar")
+                }
+                if let dpw = program.daysPerWeek {
+                    Label("\(dpw) days/week", systemImage: "calendar.day.timeline.left")
+                } else {
+                    Label("\(program.days.count) workouts", systemImage: "list.bullet.rectangle")
                 }
             }
-        } label: {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(program.name)
-                    .font(.headline)
-                if let author = program.author {
-                    Text(author)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-            }
+            .font(.caption)
+            .foregroundStyle(.secondary)
         }
-    }
-
-    private func exerciseSummary(_ day: ProgramDay) -> String {
-        day.exercises
-            .sorted(by: { $0.orderIndex < $1.orderIndex })
-            .compactMap { $0.exercise?.name }
-            .joined(separator: " · ")
+        .padding(.vertical, 2)
     }
 }
 
 #Preview {
     TrainView()
-        .modelContainer(for: IronSchemaV1.models, inMemory: true)
+        .modelContainer(for: IronSchemaV2.models, inMemory: true)
 }

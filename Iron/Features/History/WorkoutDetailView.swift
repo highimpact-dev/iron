@@ -33,7 +33,7 @@ struct WorkoutDetailView: View {
     }
 
     private var totalVolume: Double {
-        workout.setEntries.reduce(0.0) { acc, set in
+        workout.setEntries.filter { $0.setType != .warmup }.reduce(0.0) { acc, set in
             acc + Double(set.reps) * (set.weightLb ?? 0)
         }
     }
@@ -59,10 +59,14 @@ struct WorkoutDetailView: View {
             Section {
                 LabeledContent("Date", value: dateText)
                 LabeledContent("Duration", value: durationText)
-                LabeledContent("Sets", value: "\(workout.setEntries.count)")
+                LabeledContent("Working sets", value: "\(workout.setEntries.filter { $0.setType != .warmup }.count)")
+                LabeledContent("Warm-up sets", value: "\(workout.setEntries.filter { $0.setType == .warmup }.count)")
                 LabeledContent("Volume", value: volumeText)
                 if let bw = workout.bodyweightLb {
                     LabeledContent("Bodyweight", value: "\(formatWeight(bw)) lb")
+                }
+                if let rpe = workout.rpeOverall {
+                    LabeledContent("Session RPE", value: formatWeight(rpe))
                 }
             }
 
@@ -75,24 +79,14 @@ struct WorkoutDetailView: View {
                 ForEach(setsByExercise, id: \.exercise.id) { entry in
                     Section(entry.exercise.name) {
                         ForEach(Array(entry.sets.enumerated()), id: \.element.id) { idx, set in
-                            HStack {
-                                Text("Set \(idx + 1)")
-                                    .font(.callout)
-                                    .foregroundStyle(.secondary)
-                                    .frame(width: 56, alignment: .leading)
-                                Text("\(set.reps) reps")
-                                    .font(.body.monospacedDigit())
-                                Spacer()
-                                if let w = set.weightLb {
-                                    Text("\(formatWeight(w)) lb")
-                                        .font(.body.monospacedDigit())
-                                        .foregroundStyle(.secondary)
-                                } else {
-                                    Text("BW")
-                                        .font(.body)
-                                        .foregroundStyle(.secondary)
+                            LoggedSetRow(setNumber: idx + 1, set: set)
+                                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                    Button(role: .destructive) {
+                                        SetEntry.delete(set, from: workout, in: modelContext)
+                                    } label: {
+                                        Label("Delete", systemImage: "trash")
+                                    }
                                 }
-                            }
                         }
                     }
                 }

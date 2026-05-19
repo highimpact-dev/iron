@@ -11,6 +11,10 @@ struct RootTabView: View {
                 .tabItem {
                     Label("History", systemImage: "calendar")
                 }
+            NutritionView()
+                .tabItem {
+                    Label("Nutrition", systemImage: "fork.knife")
+                }
             BodyView()
                 .tabItem {
                     Label("Body", systemImage: "figure.stand")

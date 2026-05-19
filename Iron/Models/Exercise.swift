@@ -14,6 +14,7 @@ final class Exercise {
     var instructions: String?
     var videoURL: URL?
     var progressionIncrementLb: Double = 5.0
+    var isUnilateral: Bool = false
     var isCustom: Bool = false
     var createdAt: Date = Date()
     var deletedAt: Date?
@@ -33,6 +34,7 @@ final class Exercise {
         instructions: String? = nil,
         videoURL: URL? = nil,
         progressionIncrementLb: Double = 5.0,
+        isUnilateral: Bool = false,
         isCustom: Bool = false,
         createdAt: Date = Date(),
         deletedAt: Date? = nil
@@ -48,6 +50,7 @@ final class Exercise {
         self.instructions = instructions
         self.videoURL = videoURL
         self.progressionIncrementLb = progressionIncrementLb
+        self.isUnilateral = isUnilateral
         self.isCustom = isCustom
         self.createdAt = createdAt
         self.deletedAt = deletedAt

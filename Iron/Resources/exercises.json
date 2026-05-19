@@ -4,373 +4,2657 @@
     "slug": "back-squat",
     "category": "compound",
     "movementPattern": "squat",
-    "primaryMuscles": ["quads", "glutes"],
-    "secondaryMuscles": ["hamstrings", "core", "lowerBack"],
-    "equipment": ["barbell", "rack"],
+    "primaryMuscles": [
+      "quads",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core",
+      "lowerBack"
+    ],
+    "equipment": [
+      "barbell",
+      "rack"
+    ],
     "progressionIncrementLb": 10,
-    "instructions": "Bar on upper traps. Brace, descend until hip crease is below the top of the knee, drive up keeping bar over midfoot."
+    "instructions": "Set the bar on your upper back, brace, squat down under control, then drive up through midfoot.",
+    "isUnilateral": false
   },
   {
     "name": "Deadlift",
     "slug": "deadlift",
     "category": "compound",
     "movementPattern": "hinge",
-    "primaryMuscles": ["glutes", "hamstrings", "lowerBack"],
-    "secondaryMuscles": ["quads", "traps", "lats", "forearms"],
-    "equipment": ["barbell"],
+    "primaryMuscles": [
+      "glutes",
+      "hamstrings",
+      "lowerBack"
+    ],
+    "secondaryMuscles": [
+      "quads",
+      "traps",
+      "lats",
+      "forearms"
+    ],
+    "equipment": [
+      "barbell"
+    ],
     "progressionIncrementLb": 10,
-    "instructions": "Bar over midfoot. Grip just outside knees. Squeeze chest up, push the floor away. Lock out by squeezing glutes."
+    "instructions": "Set the bar over midfoot, brace, push the floor away, and stand tall without leaning back.",
+    "isUnilateral": false
   },
   {
     "name": "Bench Press",
     "slug": "bench-press",
     "category": "compound",
     "movementPattern": "push",
-    "primaryMuscles": ["chest", "triceps"],
-    "secondaryMuscles": ["frontDelts"],
-    "equipment": ["barbell", "bench", "rack"],
+    "primaryMuscles": [
+      "chest",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "barbell",
+      "bench",
+      "rack"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Tight upper back, feet planted. Lower bar to mid-chest, press over the shoulders."
+    "instructions": "Set your shoulder blades, lower the bar to mid-chest, then press up over the shoulders.",
+    "isUnilateral": false,
+    "videoURLString": "https://www.dropbox.com/scl/fi/ld0r0z7f76v1ozjb8kmev/Bench-Alain-Side.mov?rlkey=80cthu2rcbhe11ugn9bvw5n18&st=tju0z3ct&dl=0"
   },
   {
     "name": "Overhead Press",
     "slug": "overhead-press",
     "category": "compound",
     "movementPattern": "push",
-    "primaryMuscles": ["frontDelts", "triceps"],
-    "secondaryMuscles": ["sideDelts", "core"],
-    "equipment": ["barbell", "rack"],
+    "primaryMuscles": [
+      "frontDelts",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "sideDelts",
+      "core"
+    ],
+    "equipment": [
+      "barbell",
+      "rack"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Bar at front of shoulders. Brace hard, press straight up, finish with bar over the back of the head."
+    "instructions": "Brace hard, press from shoulder height to overhead, and finish with the bar stacked over midfoot.",
+    "isUnilateral": false,
+    "videoURLString": "https://www.dropbox.com/scl/fi/wxeuxy9h0pqd8ded6jaot/OHP-Rear-1.MP4?rlkey=a6mwnvv86uz95omjxwovl3wle&st=cf0wz1id&dl=0"
   },
   {
     "name": "Power Clean",
     "slug": "power-clean",
     "category": "compound",
     "movementPattern": "pull",
-    "primaryMuscles": ["fullBody"],
-    "secondaryMuscles": ["traps", "glutes", "hamstrings", "quads"],
-    "equipment": ["barbell"],
+    "primaryMuscles": [
+      "fullBody"
+    ],
+    "secondaryMuscles": [
+      "traps",
+      "glutes",
+      "hamstrings",
+      "quads"
+    ],
+    "equipment": [
+      "barbell"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Pull from the floor, accelerate at the hip, shrug, catch in a quarter-squat with elbows high."
+    "instructions": "Pull from the floor, extend hard through the hips, then catch the bar high on the shoulders.",
+    "isUnilateral": false
   },
   {
     "name": "Front Squat",
     "slug": "front-squat",
     "category": "compound",
     "movementPattern": "squat",
-    "primaryMuscles": ["quads"],
-    "secondaryMuscles": ["glutes", "core", "traps"],
-    "equipment": ["barbell", "rack"],
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "core",
+      "traps"
+    ],
+    "equipment": [
+      "barbell",
+      "rack"
+    ],
     "progressionIncrementLb": 10,
-    "instructions": "Bar in front rack, elbows up. Stay vertical through the descent, drive up keeping torso tall."
+    "instructions": "Hold a tall front rack, keep elbows high, squat down, then drive up without collapsing forward.",
+    "isUnilateral": false
   },
   {
     "name": "Romanian Deadlift",
     "slug": "romanian-deadlift",
     "category": "compound",
     "movementPattern": "hinge",
-    "primaryMuscles": ["hamstrings", "glutes"],
-    "secondaryMuscles": ["lowerBack"],
-    "equipment": ["barbell"],
+    "primaryMuscles": [
+      "hamstrings",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "lowerBack"
+    ],
+    "equipment": [
+      "barbell"
+    ],
     "progressionIncrementLb": 10,
-    "instructions": "Soft knees. Push hips back keeping bar against legs. Stop when hamstrings cap their stretch, drive hips forward."
+    "instructions": "Hold the load close, push hips back with soft knees, feel the hamstring stretch, then stand tall.",
+    "isUnilateral": false
   },
   {
     "name": "Pull-Up",
     "slug": "pull-up",
     "category": "compound",
     "movementPattern": "pull",
-    "primaryMuscles": ["lats", "biceps"],
-    "secondaryMuscles": ["rearDelts", "core"],
-    "equipment": ["bodyweight"],
+    "primaryMuscles": [
+      "lats",
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "rearDelts",
+      "core"
+    ],
+    "equipment": [
+      "bodyweight"
+    ],
     "progressionIncrementLb": 0,
-    "instructions": "Overhand grip slightly wider than shoulders. Pull chest to bar, control the descent."
+    "instructions": "Start from a full hang, pull chest toward the bar, then lower under control.",
+    "isUnilateral": false,
+    "videoURLString": "https://vimeo.com/1057291084"
   },
   {
     "name": "Chin-Up",
     "slug": "chin-up",
     "category": "compound",
     "movementPattern": "pull",
-    "primaryMuscles": ["biceps", "lats"],
-    "secondaryMuscles": ["rearDelts"],
-    "equipment": ["bodyweight"],
+    "primaryMuscles": [
+      "biceps",
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "rearDelts"
+    ],
+    "equipment": [
+      "bodyweight"
+    ],
     "progressionIncrementLb": 0,
-    "instructions": "Underhand grip shoulder-width. Pull chin over the bar, control to a full hang each rep."
+    "instructions": "Use an underhand grip, pull chin over the bar, then return to a full controlled hang.",
+    "isUnilateral": false
   },
   {
     "name": "Barbell Row",
     "slug": "barbell-row",
     "category": "compound",
     "movementPattern": "pull",
-    "primaryMuscles": ["lats", "traps"],
-    "secondaryMuscles": ["biceps", "rearDelts", "lowerBack"],
-    "equipment": ["barbell"],
+    "primaryMuscles": [
+      "lats",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rearDelts",
+      "lowerBack"
+    ],
+    "equipment": [
+      "barbell"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Hinge to ~45°. Pull bar to lower chest / upper abs, squeeze shoulder blades, control the negative."
+    "instructions": "Hinge with a braced torso, row the bar to your lower ribs, then lower without losing position.",
+    "isUnilateral": false
   },
   {
     "name": "Dumbbell Row",
     "slug": "dumbbell-row",
     "category": "compound",
     "movementPattern": "pull",
-    "primaryMuscles": ["lats"],
-    "secondaryMuscles": ["biceps", "rearDelts"],
-    "equipment": ["dumbbell", "bench"],
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rearDelts"
+    ],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "One knee on bench. Row dumbbell to hip, squeeze lat, lower under control."
+    "instructions": "Brace on a bench, row the dumbbell toward your hip, pause briefly, then lower under control.",
+    "isUnilateral": true,
+    "videoURLString": "https://www.dropbox.com/scl/fi/o94p291klz9to6gk57c48/DB-Row-Side.MOV?rlkey=4uhxgjsq2ca9uf35la0gk7k8u&st=wpqjdtad&dl=0"
   },
   {
     "name": "Incline Bench Press",
     "slug": "incline-bench-press",
     "category": "compound",
     "movementPattern": "push",
-    "primaryMuscles": ["chest", "frontDelts"],
-    "secondaryMuscles": ["triceps"],
-    "equipment": ["barbell", "bench"],
+    "primaryMuscles": [
+      "chest",
+      "frontDelts"
+    ],
+    "secondaryMuscles": [
+      "triceps"
+    ],
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Bench at 30–45°. Lower bar to upper chest, press over the shoulders."
+    "instructions": "Set the bench on an incline, lower to upper chest, then press up without flaring hard.",
+    "isUnilateral": false
   },
   {
     "name": "Dumbbell Bench Press",
     "slug": "dumbbell-bench-press",
     "category": "compound",
     "movementPattern": "push",
-    "primaryMuscles": ["chest", "triceps"],
-    "secondaryMuscles": ["frontDelts"],
-    "equipment": ["dumbbell", "bench"],
+    "primaryMuscles": [
+      "chest",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Lower dumbbells to chest level, press up and slightly together at the top."
+    "instructions": "Lie flat, lower dumbbells beside the chest, then press up and slightly together.",
+    "isUnilateral": false,
+    "videoURLString": "https://vimeo.com/1057290960"
   },
   {
     "name": "Dip",
     "slug": "dip",
     "category": "compound",
     "movementPattern": "push",
-    "primaryMuscles": ["chest", "triceps"],
-    "secondaryMuscles": ["frontDelts"],
-    "equipment": ["bodyweight"],
+    "primaryMuscles": [
+      "chest",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "bodyweight"
+    ],
     "progressionIncrementLb": 0,
-    "instructions": "Slight forward lean for chest, vertical for triceps. Lower until upper arms are parallel, press to lockout."
+    "instructions": "Lower until shoulders are comfortable, keep elbows tracking back, then press to locked-out arms.",
+    "isUnilateral": false
   },
   {
     "name": "Walking Lunge",
     "slug": "walking-lunge",
     "category": "compound",
     "movementPattern": "squat",
-    "primaryMuscles": ["quads", "glutes"],
-    "secondaryMuscles": ["hamstrings", "core"],
-    "equipment": ["dumbbell"],
+    "primaryMuscles": [
+      "quads",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Step forward, drop the back knee toward the floor, drive through the front heel to the next step."
+    "instructions": "Step forward, lower the back knee under control, then drive through the front foot into the next step.",
+    "isUnilateral": true
   },
   {
     "name": "Bulgarian Split Squat",
     "slug": "bulgarian-split-squat",
     "category": "compound",
     "movementPattern": "squat",
-    "primaryMuscles": ["quads", "glutes"],
-    "secondaryMuscles": ["hamstrings", "core"],
-    "equipment": ["dumbbell", "bench"],
+    "primaryMuscles": [
+      "quads",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core"
+    ],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Rear foot on bench. Drop the back knee, drive through the front heel. Front shin stays roughly vertical."
+    "instructions": "Set rear foot on a bench, lower through the front leg, then drive up through the front foot.",
+    "isUnilateral": true,
+    "videoURLString": "https://www.dropbox.com/scl/fi/i6fzsyva9o2wvmfualc1c/BSS-Side.MP4?rlkey=5fnkbdy8plfux2er2ijwnxnqe&st=cz975hnr&dl=0"
   },
   {
     "name": "Hip Thrust",
     "slug": "hip-thrust",
     "category": "compound",
     "movementPattern": "hinge",
-    "primaryMuscles": ["glutes"],
-    "secondaryMuscles": ["hamstrings", "core"],
-    "equipment": ["barbell", "bench"],
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core"
+    ],
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
     "progressionIncrementLb": 10,
-    "instructions": "Upper back on bench, bar across hips. Drive hips up to lockout, ribs down, squeeze glutes."
+    "instructions": "Set upper back on a bench, tuck ribs down, drive hips up, pause, then lower under control.",
+    "isUnilateral": false,
+    "videoURLString": "https://www.dropbox.com/scl/fi/3sq0j4ntai8erbus4d49q/BB-Hip-Thrust-Side-Vertical-1.MP4?rlkey=w7svb9y8w34xo2vd21q4jnufh&st=2rrcouv4&dl=0"
   },
   {
     "name": "Push-Up",
     "slug": "push-up",
     "category": "compound",
     "movementPattern": "push",
-    "primaryMuscles": ["chest", "triceps"],
-    "secondaryMuscles": ["frontDelts", "core"],
-    "equipment": ["bodyweight"],
+    "primaryMuscles": [
+      "chest",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "frontDelts",
+      "core"
+    ],
+    "equipment": [
+      "bodyweight"
+    ],
     "progressionIncrementLb": 0,
-    "instructions": "Plank position. Lower chest to floor, press to full lockout. Body in one straight line."
+    "instructions": "Keep a straight body line, lower chest toward the floor, then press up without sagging hips.",
+    "isUnilateral": false
   },
   {
     "name": "Lat Pulldown",
     "slug": "lat-pulldown",
     "category": "compound",
     "movementPattern": "pull",
-    "primaryMuscles": ["lats"],
-    "secondaryMuscles": ["biceps", "rearDelts"],
-    "equipment": ["cable"],
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rearDelts"
+    ],
+    "equipment": [
+      "cable"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Wide overhand grip. Pull bar to upper chest, lead with the elbows, control the return."
+    "instructions": "Set shoulders down, pull the bar to upper chest, then control the stretch back overhead.",
+    "isUnilateral": false,
+    "videoURLString": "https://vimeo.com/1057291025"
   },
   {
     "name": "Seated Cable Row",
     "slug": "seated-cable-row",
     "category": "compound",
     "movementPattern": "pull",
-    "primaryMuscles": ["lats", "traps"],
-    "secondaryMuscles": ["biceps", "rearDelts"],
-    "equipment": ["cable"],
+    "primaryMuscles": [
+      "lats",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rearDelts"
+    ],
+    "equipment": [
+      "cable"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Tall chest. Pull handle to lower ribs, squeeze shoulder blades, return with control."
+    "instructions": "Sit tall, pull the handle toward your torso, squeeze back, then return with control.",
+    "isUnilateral": false,
+    "videoURLString": "https://www.dropbox.com/scl/fi/kuqvxhvrcl6zk1fiy7lxs/Seated-Cable-Rows-V-BAR.MP4?rlkey=rfw2wnqebimg41roipp6icwi8&st=51nbp6fi&dl=0"
   },
   {
     "name": "Bicep Curl",
     "slug": "bicep-curl",
     "category": "isolation",
     "movementPattern": "pull",
-    "primaryMuscles": ["biceps"],
-    "secondaryMuscles": ["forearms"],
-    "equipment": ["dumbbell"],
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Elbows pinned to sides. Curl up, squeeze, lower under control."
+    "instructions": "Keep elbows still, curl the weight up, squeeze briefly, then lower fully under control.",
+    "isUnilateral": false
   },
   {
     "name": "Hammer Curl",
     "slug": "hammer-curl",
     "category": "isolation",
     "movementPattern": "pull",
-    "primaryMuscles": ["biceps", "forearms"],
+    "primaryMuscles": [
+      "biceps",
+      "forearms"
+    ],
     "secondaryMuscles": [],
-    "equipment": ["dumbbell"],
+    "equipment": [
+      "dumbbell"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Neutral grip. Curl up, squeeze, lower under control."
+    "instructions": "Keep palms facing in, curl without swinging, then lower until elbows are fully extended.",
+    "isUnilateral": false
   },
   {
     "name": "Tricep Pushdown",
     "slug": "tricep-pushdown",
     "category": "isolation",
     "movementPattern": "push",
-    "primaryMuscles": ["triceps"],
+    "primaryMuscles": [
+      "triceps"
+    ],
     "secondaryMuscles": [],
-    "equipment": ["cable"],
+    "equipment": [
+      "cable"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Elbows tight to sides. Push down to lockout, control the return."
+    "instructions": "Pin elbows by your sides, press the handle down, lock out, then return under control.",
+    "isUnilateral": false,
+    "videoURLString": "https://vimeo.com/1057291099"
   },
   {
     "name": "Overhead Tricep Extension",
     "slug": "overhead-tricep-extension",
     "category": "isolation",
     "movementPattern": "push",
-    "primaryMuscles": ["triceps"],
+    "primaryMuscles": [
+      "triceps"
+    ],
     "secondaryMuscles": [],
-    "equipment": ["dumbbell"],
+    "equipment": [
+      "dumbbell"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Dumbbell overhead, elbows close. Lower behind head, extend to lockout."
+    "instructions": "Keep upper arms near your head, lower into a stretch, then extend elbows fully.",
+    "isUnilateral": false
   },
   {
     "name": "Lateral Raise",
     "slug": "lateral-raise",
     "category": "isolation",
     "movementPattern": "push",
-    "primaryMuscles": ["sideDelts"],
+    "primaryMuscles": [
+      "sideDelts"
+    ],
     "secondaryMuscles": [],
-    "equipment": ["dumbbell"],
+    "equipment": [
+      "dumbbell"
+    ],
     "progressionIncrementLb": 2.5,
-    "instructions": "Slight forward lean. Raise dumbbells to shoulder height, lead with the elbows."
+    "instructions": "Raise arms out to the sides with soft elbows, stop around shoulder height, then lower slowly.",
+    "isUnilateral": false
   },
   {
     "name": "Face Pull",
     "slug": "face-pull",
     "category": "isolation",
     "movementPattern": "pull",
-    "primaryMuscles": ["rearDelts"],
-    "secondaryMuscles": ["traps"],
-    "equipment": ["cable"],
+    "primaryMuscles": [
+      "rearDelts"
+    ],
+    "secondaryMuscles": [
+      "traps"
+    ],
+    "equipment": [
+      "cable"
+    ],
     "progressionIncrementLb": 5,
-    "instructions": "Rope attachment at face height. Pull rope to forehead, externally rotate, squeeze rear delts."
+    "instructions": "Pull the rope toward eye level with elbows high, then return while keeping shoulders controlled.",
+    "isUnilateral": false
   },
   {
     "name": "Calf Raise",
     "slug": "calf-raise",
     "category": "isolation",
     "movementPattern": "push",
-    "primaryMuscles": ["calves"],
+    "primaryMuscles": [
+      "calves"
+    ],
     "secondaryMuscles": [],
-    "equipment": ["bodyweight"],
+    "equipment": [
+      "bodyweight"
+    ],
     "progressionIncrementLb": 0,
-    "instructions": "Press up onto the balls of the feet, full stretch at the bottom."
+    "instructions": "Lower into a full calf stretch, rise onto the balls of your feet, pause, then lower slowly.",
+    "isUnilateral": false
   },
   {
     "name": "Plank",
     "slug": "plank",
     "category": "isolation",
     "movementPattern": "core",
-    "primaryMuscles": ["core"],
+    "primaryMuscles": [
+      "core"
+    ],
     "secondaryMuscles": [],
-    "equipment": ["bodyweight"],
+    "equipment": [
+      "bodyweight"
+    ],
     "progressionIncrementLb": 0,
-    "instructions": "Forearms down, ribs pulled toward hips, glutes squeezed. Hold one straight line."
+    "instructions": "Brace abs and glutes, keep ribs down, and hold a straight line from shoulders to heels.",
+    "isUnilateral": false
   },
   {
     "name": "Hanging Leg Raise",
     "slug": "hanging-leg-raise",
     "category": "isolation",
     "movementPattern": "core",
-    "primaryMuscles": ["core"],
-    "secondaryMuscles": ["forearms"],
-    "equipment": ["bodyweight"],
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "bodyweight"
+    ],
     "progressionIncrementLb": 0,
-    "instructions": "Hang from bar. Raise legs to parallel or higher, control the descent — no swinging."
+    "instructions": "Hang tall, curl pelvis up as you raise legs, then lower without swinging.",
+    "isUnilateral": false
   },
   {
     "name": "Run",
     "slug": "run",
     "category": "conditioning",
     "movementPattern": "conditioning",
-    "primaryMuscles": ["fullBody"],
+    "primaryMuscles": [
+      "fullBody"
+    ],
     "secondaryMuscles": [],
-    "equipment": ["bodyweight", "treadmill"],
+    "equipment": [
+      "bodyweight",
+      "treadmill"
+    ],
     "progressionIncrementLb": 0,
-    "instructions": "Steady-state, intervals, or sprints depending on the day's target."
+    "instructions": "Use an easy warm-up, settle into the planned pace, and keep breathing and stride relaxed.",
+    "isUnilateral": false
   },
   {
     "name": "Row Erg",
     "slug": "row-erg",
     "category": "conditioning",
     "movementPattern": "conditioning",
-    "primaryMuscles": ["fullBody"],
+    "primaryMuscles": [
+      "fullBody"
+    ],
     "secondaryMuscles": [],
-    "equipment": ["rower"],
+    "equipment": [
+      "rower"
+    ],
     "progressionIncrementLb": 0,
-    "instructions": "Legs, back, arms — in that order. Recover arms, back, legs."
+    "instructions": "Drive with legs, swing the torso, pull to ribs, then recover arms, body, legs.",
+    "isUnilateral": false
   },
   {
     "name": "Air Bike",
     "slug": "air-bike",
     "category": "conditioning",
     "movementPattern": "conditioning",
-    "primaryMuscles": ["fullBody"],
+    "primaryMuscles": [
+      "fullBody"
+    ],
     "secondaryMuscles": [],
-    "equipment": ["assault"],
+    "equipment": [
+      "assault"
+    ],
     "progressionIncrementLb": 0,
-    "instructions": "Drive arms and legs together. Calorie or distance targets."
+    "instructions": "Push and pull the handles while driving the pedals, keeping cadence smooth and controlled.",
+    "isUnilateral": false
   },
   {
     "name": "Bike",
     "slug": "bike",
     "category": "conditioning",
     "movementPattern": "conditioning",
-    "primaryMuscles": ["quads", "calves"],
-    "secondaryMuscles": ["fullBody"],
-    "equipment": ["bike"],
+    "primaryMuscles": [
+      "quads",
+      "calves"
+    ],
+    "secondaryMuscles": [
+      "fullBody"
+    ],
+    "equipment": [
+      "bike"
+    ],
     "progressionIncrementLb": 0,
-    "instructions": "Steady-state or interval work."
+    "instructions": "Set the seat height, pedal smoothly, and keep effort matched to the workout target.",
+    "isUnilateral": false
   },
   {
     "name": "Ruck",
     "slug": "ruck",
     "category": "conditioning",
     "movementPattern": "conditioning",
-    "primaryMuscles": ["fullBody"],
+    "primaryMuscles": [
+      "fullBody"
+    ],
     "secondaryMuscles": [],
-    "equipment": ["bodyweight"],
+    "equipment": [
+      "bodyweight"
+    ],
     "progressionIncrementLb": 0,
-    "instructions": "Walk with a loaded pack. Track distance, time, and load."
+    "instructions": "Load the pack securely, walk tall, and keep a steady pace with relaxed shoulders.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Assisted Dip",
+    "slug": "assisted-dip",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Set assistance, lower under control, then press up while keeping elbows tracking back.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Standing Calf Raise",
+    "slug": "standing-calf-raise",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Stand tall, drop heels into a stretch, rise high onto toes, pause, then lower slowly.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Dumbbell Supinated Curl",
+    "slug": "dumbbell-supinated-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Start palms forward, keep elbows still, curl up, then lower to a full stretch.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Chest-Supported T-Bar Row",
+    "slug": "chest-supported-t-bar-row",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "rearDelts",
+      "biceps"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Press chest into the pad, row handles toward torso, squeeze, then lower fully.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Leg Extension",
+    "slug": "leg-extension",
+    "category": "isolation",
+    "movementPattern": "squat",
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Set knees aligned with the machine, extend legs hard, pause, then lower slowly.",
+    "isUnilateral": false,
+    "videoURLString": "https://vimeo.com/1057291032"
+  },
+  {
+    "name": "Cable Flye",
+    "slug": "cable-flye",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Set cables wide, keep elbows soft, bring hands together in front of chest, then open under control.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Crunch",
+    "slug": "crunch",
+    "category": "isolation",
+    "movementPattern": "core",
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "bodyweight"
+    ],
+    "progressionIncrementLb": 0,
+    "instructions": "Curl ribs toward pelvis, squeeze abs, then lower without pulling on the neck.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Dumbbell Skull Crusher",
+    "slug": "dumbbell-skull-crusher",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Lie back, keep upper arms angled slightly back, bend elbows, then extend to finish.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Dumbbell Incline Press",
+    "slug": "dumbbell-incline-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "frontDelts"
+    ],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Set an incline, lower dumbbells to upper chest, then press up under control.",
+    "isUnilateral": false,
+    "videoURLString": "https://www.dropbox.com/scl/fi/a0qldbrnm6hy4x1649tu2/Incline-DB-Press.MP4?rlkey=e9mrunhgiu7cxpcss8mknqyr6&st=gkw1yms3&dl=0"
+  },
+  {
+    "name": "Reverse Grip Lat Pulldown",
+    "slug": "reverse-grip-lat-pulldown",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Use an underhand grip, pull elbows down toward ribs, then control the stretch overhead.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Lying Leg Curl",
+    "slug": "lying-leg-curl",
+    "category": "isolation",
+    "movementPattern": "hinge",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Set knees at the machine pivot, curl heels toward glutes, pause, then lower slowly.",
+    "isUnilateral": false,
+    "videoURLString": "https://www.dropbox.com/scl/fi/wx8qi3w9tpkwggr6uhnw8/Lying-Leg-Curl-1.MOV?rlkey=hhnl0rfbw2vthfwmw6dcvpwy6&st=k4y9m5jr&dl=0"
+  },
+  {
+    "name": "Dumbbell Seated Shoulder Press",
+    "slug": "dumbbell-seated-shoulder-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "frontDelts",
+      "sideDelts"
+    ],
+    "secondaryMuscles": [
+      "triceps"
+    ],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Sit tall, press dumbbells overhead, then lower to shoulder level under control.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Single-Arm Pulldown",
+    "slug": "single-arm-pulldown",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Set shoulder down, pull one handle toward your ribs, then let the lat stretch under control.",
+    "isUnilateral": true
+  },
+  {
+    "name": "Pec Deck",
+    "slug": "pec-deck",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Set elbows on pads, bring arms together, squeeze chest, then open slowly.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Reverse Pec Deck",
+    "slug": "reverse-pec-deck",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "rearDelts"
+    ],
+    "secondaryMuscles": [
+      "traps"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Set chest against pad, sweep arms back with rear delts, then return slowly.",
+    "isUnilateral": false,
+    "videoURLString": "https://www.dropbox.com/scl/fi/tjl2tj5v0fkh11movpq16/Reverse-Peck-Deck.MP4?rlkey=y857lwovghlec4laem0kazyl4&st=1r2lt683&dl=0"
+  },
+  {
+    "name": "Cable Lateral Raise",
+    "slug": "cable-lateral-raise",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "sideDelts"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Stand side-on to the cable, raise one arm out to shoulder height, then lower slowly.",
+    "isUnilateral": true,
+    "videoURLString": "https://vimeo.com/1057290917"
+  },
+  {
+    "name": "Close-Grip Bench Press",
+    "slug": "close-grip-bench-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "triceps",
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Grip just inside shoulder width, lower to lower chest, then press while keeping elbows tucked.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Bicycle Crunch",
+    "slug": "bicycle-crunch",
+    "category": "isolation",
+    "movementPattern": "core",
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "bodyweight"
+    ],
+    "progressionIncrementLb": 0,
+    "instructions": "Rotate ribs toward the opposite knee while extending the other leg, then alternate sides smoothly.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Single-Arm Cable Curl",
+    "slug": "single-arm-cable-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Face the cable, keep elbow still, curl one handle up, then lower fully.",
+    "isUnilateral": true
+  },
+  {
+    "name": "Neutral-Grip Pulldown",
+    "slug": "neutral-grip-pulldown",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Use neutral handles, pull elbows down toward ribs, then control the return overhead.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Single-Arm Rope Tricep Extension",
+    "slug": "single-arm-rope-tricep-extension",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Keep elbow fixed, extend one arm down and out, then return slowly.",
+    "isUnilateral": true
+  },
+  {
+    "name": "Machine Seated Hip Abduction",
+    "slug": "machine-seated-hip-abduction",
+    "category": "isolation",
+    "movementPattern": "hinge",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Sit tall, drive knees apart, pause at the outside, then return under control.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Single-Leg Leg Extension",
+    "slug": "single-leg-leg-extension",
+    "category": "isolation",
+    "movementPattern": "squat",
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Align one knee with the pivot, extend fully, pause, then lower slowly.",
+    "isUnilateral": true
+  },
+  {
+    "name": "Single-Leg Lying Leg Curl",
+    "slug": "single-leg-lying-leg-curl",
+    "category": "isolation",
+    "movementPattern": "hinge",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Curl one heel toward the glute, pause, then lower slowly without hip lift.",
+    "isUnilateral": true
+  },
+  {
+    "name": "Goblet Squat",
+    "slug": "goblet-squat",
+    "category": "compound",
+    "movementPattern": "squat",
+    "primaryMuscles": [
+      "quads",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "core"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Hold the weight at chest, squat between your knees, then drive up through midfoot.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Dumbbell Single-Leg Hip Thrust",
+    "slug": "dumbbell-single-leg-hip-thrust",
+    "category": "compound",
+    "movementPattern": "hinge",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings"
+    ],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Set upper back on bench, plant one foot, drive hips up, pause, then lower.",
+    "isUnilateral": true
+  },
+  {
+    "name": "Leg Press",
+    "slug": "leg-press",
+    "category": "compound",
+    "movementPattern": "squat",
+    "primaryMuscles": [
+      "quads",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 10,
+    "instructions": "Set feet on the platform, lower until knees bend comfortably, then press without locking hard.",
+    "isUnilateral": false,
+    "videoURLString": "https://vimeo.com/1057291043"
+  },
+  {
+    "name": "Seated Leg Curl",
+    "slug": "seated-leg-curl",
+    "category": "isolation",
+    "movementPattern": "hinge",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Set knees at the pivot, curl pad down and back, pause, then return slowly.",
+    "isUnilateral": false,
+    "videoURLString": "https://vimeo.com/1057291124"
+  },
+  {
+    "name": "Cable Reverse Flye",
+    "slug": "cable-reverse-flye",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "rearDelts"
+    ],
+    "secondaryMuscles": [
+      "traps"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Set cables across the body, sweep arms back with rear delts, then return slowly.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Cable Tricep Kickback",
+    "slug": "cable-tricep-kickback",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Hinge slightly, pin upper arm, extend elbow back, then return under control.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Machine Incline Chest Press",
+    "slug": "machine-incline-chest-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "frontDelts"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Set seat for upper chest, press handles up and forward, then lower under control.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Dumbbell Bent Over Lateral Raise",
+    "slug": "dumbbell-bent-over-lateral-raise",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "rearDelts"
+    ],
+    "secondaryMuscles": [
+      "traps"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Hinge forward, raise dumbbells out wide with rear delts, then lower slowly.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Dumbbell Floor Press",
+    "slug": "dumbbell-floor-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Lie on the floor, lower elbows until triceps touch, then press dumbbells up.",
+    "isUnilateral": false
+  },
+  {
+    "name": "EZ Bar Curl",
+    "slug": "ez-bar-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Grip the EZ-bar, keep elbows still, curl up, then lower to full extension.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Weighted Pull-Up",
+    "slug": "weighted-pull-up",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "traps",
+      "core",
+      "lowerBack"
+    ],
+    "equipment": [
+      "bodyweight"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Secure the load, pull chest toward the bar, then lower to a controlled full hang.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Deficit Pendlay Row",
+    "slug": "deficit-pendlay-row",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "lowerBack",
+      "core"
+    ],
+    "equipment": [
+      "barbell",
+      "box"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Stand on a small deficit, pull each rep from the floor, then reset with a braced back.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Cable Overhead Triceps Extension",
+    "slug": "cable-overhead-triceps-extension",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Face away from cable, keep elbows high, extend overhead, then return to a deep stretch.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Bayesian Cable Curl",
+    "slug": "bayesian-cable-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 2.5,
+    "instructions": "Stand ahead of the cable, let arm reach behind you, curl up, then lower into the stretch.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Cable Crossover Ladder",
+    "slug": "cable-crossover-ladder",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Move through low, mid, or high cable flye paths, bringing hands together with control each rep.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Wide-Grip Pull-Up",
+    "slug": "wide-grip-pull-up",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rearDelts"
+    ],
+    "equipment": [
+      "bodyweight"
+    ],
+    "progressionIncrementLb": 0,
+    "instructions": "Use a wide overhand grip, pull chest up, then lower to a full controlled hang.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Smith Machine Squat",
+    "slug": "smith-machine-squat",
+    "category": "compound",
+    "movementPattern": "squat",
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "core"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 10,
+    "instructions": "Set feet comfortably, brace, squat under the Smith bar, then drive up through midfoot.",
+    "isUnilateral": false,
+    "videoURLString": "https://vimeo.com/1057291143"
+  },
+  {
+    "name": "Cable Crunch",
+    "slug": "cable-crunch",
+    "category": "isolation",
+    "movementPattern": "core",
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Kneel at the cable, curl ribs toward pelvis, squeeze abs, then return without sitting back.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Chest-Supported Machine Row",
+    "slug": "chest-supported-machine-row",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "rearDelts",
+      "biceps"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Brace chest on pad, row handles toward torso, squeeze back, then lower fully.",
+    "isUnilateral": false
+  },
+  {
+    "name": "1-Arm 45-Degree Cable Rear Delt Flye",
+    "slug": "one-arm-45-degree-cable-rear-delt-flye",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "rearDelts"
+    ],
+    "secondaryMuscles": [
+      "traps"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Stand at a 45-degree angle, pull one cable across and back, then return slowly.",
+    "isUnilateral": true
+  },
+  {
+    "name": "Machine Shrug",
+    "slug": "machine-shrug",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 10,
+    "instructions": "Hold handles, elevate shoulders straight up, pause, then lower to a full stretch.",
+    "isUnilateral": false
+  },
+  {
+    "name": "EZ-Bar Cable Curl",
+    "slug": "ez-bar-cable-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Attach EZ-bar to cable, keep elbows still, curl up, then lower under constant tension.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Machine Preacher Curl",
+    "slug": "machine-preacher-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Set arms on pad, curl handle up, squeeze, then lower slowly without lifting elbows.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Machine Shoulder Press",
+    "slug": "machine-shoulder-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "frontDelts"
+    ],
+    "secondaryMuscles": [
+      "sideDelts",
+      "triceps"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Set seat so handles start near shoulders, press overhead, then lower under control.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Bottom-Half Dumbbell Flye",
+    "slug": "bottom-half-dumbbell-flye",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Lower dumbbells into the stretched half of a flye, then raise only through the lower range.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Lying Leg Raise",
+    "slug": "lying-leg-raise",
+    "category": "isolation",
+    "movementPattern": "core",
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "bodyweight"
+    ],
+    "progressionIncrementLb": 0,
+    "instructions": "Lie flat, brace abs, raise legs without swinging, then lower without arching your back.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Dual-Handle Lat Pulldown",
+    "slug": "dual-handle-lat-pulldown",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "traps",
+      "biceps"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Pull both handles down toward ribs, drive elbows low, then control the overhead stretch.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Smith Machine Row",
+    "slug": "smith-machine-row",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "rearDelts",
+      "biceps"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Hinge to the bar, row toward torso, squeeze back, then lower under control.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Smith Machine Static Lunge with Elevated Front Foot",
+    "slug": "smith-machine-static-lunge-elevated-front-foot",
+    "category": "compound",
+    "movementPattern": "squat",
+    "primaryMuscles": [
+      "quads",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings"
+    ],
+    "equipment": [
+      "machine",
+      "box"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Elevate front foot, lower into the lunge, then drive up through the front leg.",
+    "isUnilateral": false
+  },
+  {
+    "name": "45-Degree Hyperextension",
+    "slug": "forty-five-degree-hyperextension",
+    "category": "compound",
+    "movementPattern": "hinge",
+    "primaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "lowerBack"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Set hips on pad, hinge down, then extend hips until body is straight.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Leg Press Calf Press",
+    "slug": "leg-press-calf-press",
+    "category": "isolation",
+    "movementPattern": "squat",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 10,
+    "instructions": "Keep legs mostly straight, let heels drop, press through toes, pause, then lower slowly.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Machine Crunch",
+    "slug": "machine-crunch",
+    "category": "isolation",
+    "movementPattern": "core",
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Set pad against chest, curl ribs toward pelvis, squeeze abs, then return slowly.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Lean-Back Lat Pulldown",
+    "slug": "lean-back-lat-pulldown",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rearDelts"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Lean slightly back, pull bar toward upper chest, then control the stretch overhead.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Cable Paused Shrug-In",
+    "slug": "cable-paused-shrug-in",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Hold cable handles, shrug up and slightly in, pause, then lower fully.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Cable Rope Hammer Curl",
+    "slug": "cable-rope-hammer-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Hold rope ends, curl with palms facing in, squeeze, then lower fully.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Dumbbell Concentration Curl",
+    "slug": "dumbbell-concentration-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Brace elbow against inner thigh, curl dumbbell up, squeeze, then lower slowly.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Machine Chest Press",
+    "slug": "machine-chest-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "frontDelts",
+      "triceps"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Set handles at chest height, press forward, then lower until chest is stretched.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Bottom-Half Seated Cable Flye",
+    "slug": "bottom-half-seated-cable-flye",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "cable",
+      "bench"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Sit between cables, open into the stretched range, then bring hands halfway together.",
+    "isUnilateral": false
+  },
+  {
+    "name": "EZ-Bar Skull Crusher",
+    "slug": "ez-bar-skull-crusher",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Lie back, keep upper arms steady, lower EZ-bar toward forehead, then extend elbows.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Triceps Pressdown (Bar)",
+    "slug": "triceps-pressdown-bar",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 5,
+    "instructions": "Grip the bar, keep elbows pinned, press down to lockout, then return slowly.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Ab Wheel Rollout",
+    "slug": "ab-wheel-rollout",
+    "category": "isolation",
+    "movementPattern": "core",
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [
+      "lats"
+    ],
+    "equipment": [
+      "bodyweight"
+    ],
+    "progressionIncrementLb": 0,
+    "instructions": "Brace hard, roll forward only as far as you can control, then pull back with abs.",
+    "isUnilateral": false
+  },
+  {
+    "name": "Hack Squat",
+    "slug": "hack-squat",
+    "category": "compound",
+    "movementPattern": "squat",
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [
+      "glutes"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 10,
+    "instructions": "Set shoulders under pads, squat deep with heels planted, then drive the sled up.",
+    "isUnilateral": false,
+    "videoURLString": "https://www.dropbox.com/scl/fi/kiicp6ydswe294ts3p9no/Hack-Squat.MOV?rlkey=5pnv1npnrohjj30bu75nh6qb2&st=lilu3oj5&dl=0"
+  },
+  {
+    "name": "Converging Chest Press",
+    "slug": "converging-chest-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Set handles at mid-chest, press forward and inward, then lower under control.",
+    "videoURLString": "https://vimeo.com/1057290932"
+  },
+  {
+    "name": "Flat Dumbbell Chest Press",
+    "slug": "flat-dumbbell-chest-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 2.5,
+    "isUnilateral": false,
+    "instructions": "Lie flat, lower dumbbells beside chest, then press up and slightly together.",
+    "videoURLString": "https://vimeo.com/1057290960"
+  },
+  {
+    "name": "Barbell Bench Press",
+    "slug": "barbell-bench-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "barbell",
+      "bench",
+      "rack"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Set shoulder blades, lower bar to mid-chest, then press up over shoulders.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/ld0r0z7f76v1ozjb8kmev/Bench-Alain-Side.mov?rlkey=80cthu2rcbhe11ugn9bvw5n18&st=tju0z3ct&dl=0"
+  },
+  {
+    "name": "Barbell Romanian Deadlift",
+    "slug": "barbell-romanian-deadlift",
+    "category": "compound",
+    "movementPattern": "hinge",
+    "primaryMuscles": [
+      "hamstrings",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "lowerBack"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Hold bar close, push hips back with soft knees, stretch hamstrings, then stand tall.",
+    "videoURLString": "https://vimeo.com/1057291111"
+  },
+  {
+    "name": "Dumbbell Romanian Deadlift",
+    "slug": "dumbbell-romanian-deadlift",
+    "category": "compound",
+    "movementPattern": "hinge",
+    "primaryMuscles": [
+      "hamstrings",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "lowerBack"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
+    "progressionIncrementLb": 2.5,
+    "isUnilateral": false,
+    "instructions": "Hold dumbbells close, hinge back until hamstrings stretch, then drive hips forward.",
+    "videoURLString": "https://vimeo.com/1057290973"
+  },
+  {
+    "name": "Trap Bar Deadlift",
+    "slug": "trap-bar-deadlift",
+    "category": "compound",
+    "movementPattern": "hinge",
+    "primaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "quads",
+      "lowerBack",
+      "traps"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "progressionIncrementLb": 10,
+    "isUnilateral": false,
+    "instructions": "Stand centered, brace, push the floor away, then stand tall with shoulders back.",
+    "videoURLString": "https://vimeo.com/1057291193"
+  },
+  {
+    "name": "Dumbbell Lateral Raise",
+    "slug": "dumbbell-lateral-raise",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "sideDelts"
+    ],
+    "secondaryMuscles": [
+      "traps"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
+    "progressionIncrementLb": 2.5,
+    "isUnilateral": true,
+    "instructions": "Raise dumbbells out to the sides with soft elbows, pause near shoulder height, then lower slowly.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/8ot5g6vb0f7n46xy52nir/Lateral-Raise.MOV?rlkey=zwm4bxn8sle3whwsjlhw1wep5&st=vunomd40&dl=0"
+  },
+  {
+    "name": "Upright Row",
+    "slug": "upright-row",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "sideDelts",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Pull the load up close to the body with elbows leading, then lower under control.",
+    "videoURLString": "https://vimeo.com/1057291199"
+  },
+  {
+    "name": "Wide-Grip Upright Row",
+    "slug": "wide-grip-upright-row",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "sideDelts",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Use a wide grip, pull elbows up to lower chest height, then lower slowly.",
+    "videoURLString": "https://vimeo.com/1057291199"
+  },
+  {
+    "name": "Incline Dumbbell Curl",
+    "slug": "incline-dumbbell-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 2.5,
+    "isUnilateral": false,
+    "instructions": "Lie back on an incline, let arms hang, curl without swinging, then lower fully.",
+    "videoURLString": "https://vimeo.com/1057291011"
+  },
+  {
+    "name": "Standing Barbell Curl",
+    "slug": "standing-barbell-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Stand tall, keep elbows by sides, curl bar up, then lower to full extension.",
+    "videoURLString": "https://vimeo.com/1057290876"
+  },
+  {
+    "name": "Seated Cable Curl",
+    "slug": "seated-cable-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "cable",
+      "bench"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Sit facing cable, keep elbows steady, curl handle up, then lower under tension."
+  },
+  {
+    "name": "Dumbbell Rear Delt Raise",
+    "slug": "dumbbell-rear-delt-raise",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "rearDelts"
+    ],
+    "secondaryMuscles": [
+      "traps"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
+    "progressionIncrementLb": 2.5,
+    "isUnilateral": false,
+    "instructions": "Hinge forward, raise dumbbells out wide with rear delts, then lower slowly.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/m47dbl685nm457aaisfrs/CS-Rear-Delt-Fly-5.MOV?rlkey=iv4cc5nd2fpz158ujylhypkit&st=gpup8hsq&dl=0"
+  },
+  {
+    "name": "Cable Face Pull",
+    "slug": "cable-face-pull",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "rearDelts",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Pull rope toward eyes with elbows high, squeeze rear delts, then return slowly.",
+    "videoURLString": "https://vimeo.com/1057291001"
+  },
+  {
+    "name": "Chest-Supported Row",
+    "slug": "chest-supported-row",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rearDelts"
+    ],
+    "equipment": [
+      "machine",
+      "bench"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Brace chest on support, row handles toward torso, then lower to a full stretch.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/esua3dj40s0oq1rnqoftw/Chest-Supported-DB-Row-SIDE.MP4?rlkey=zha78mg5ij6vgfrxfwwmugm38&st=sh92c2po&dl=0/"
+  },
+  {
+    "name": "T-Bar Row",
+    "slug": "t-bar-row",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rearDelts",
+      "lowerBack"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Hinge or brace into the pad, row handle toward torso, then lower under control.",
+    "videoURLString": "https://vimeo.com/1057291185"
+  },
+  {
+    "name": "Incline Dumbbell Press",
+    "slug": "incline-dumbbell-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 2.5,
+    "isUnilateral": false,
+    "instructions": "Set incline bench, lower dumbbells to upper chest, then press up under control.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/a0qldbrnm6hy4x1649tu2/Incline-DB-Press.MP4?rlkey=e9mrunhgiu7cxpcss8mknqyr6&st=gkw1yms3&dl=0"
+  },
+  {
+    "name": "Incline Barbell Press",
+    "slug": "incline-barbell-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "barbell",
+      "bench",
+      "rack"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Set incline bench, lower bar to upper chest, then press up and back slightly.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/53kqghe0ztudxnksvztbi/Incline-Press-Demo-2.MP4?rlkey=r3or5u5ckb8g43vjjloq8vcwz&st=5lct2j35&dl=0"
+  },
+  {
+    "name": "Incline Smith Machine Press",
+    "slug": "incline-smith-machine-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "chest",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "frontDelts"
+    ],
+    "equipment": [
+      "machine",
+      "bench"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Set incline bench under bar, lower to upper chest, then press along the guide path.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/q7eych2wr2miyxearlgkv/Alain-Smith-Incline-2.MP4?rlkey=hmeqx4n56z79kauqswv6ylgg3&st=leg89ztt&dl=0"
+  },
+  {
+    "name": "Barbell Hip Thrust",
+    "slug": "barbell-hip-thrust",
+    "category": "compound",
+    "movementPattern": "hinge",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core"
+    ],
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 10,
+    "isUnilateral": false,
+    "instructions": "Set upper back on bench, brace ribs down, drive hips up, pause, then lower.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/3sq0j4ntai8erbus4d49q/BB-Hip-Thrust-Side-Vertical-1.MP4?rlkey=w7svb9y8w34xo2vd21q4jnufh&st=2rrcouv4&dl=0"
+  },
+  {
+    "name": "Sumo Deadlift",
+    "slug": "sumo-deadlift",
+    "category": "compound",
+    "movementPattern": "hinge",
+    "primaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "quads",
+      "lowerBack"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "progressionIncrementLb": 10,
+    "isUnilateral": false,
+    "instructions": "Set a wide stance, brace, push knees out, drive through floor, and stand tall."
+  },
+  {
+    "name": "Dumbbell Lunge",
+    "slug": "dumbbell-lunge",
+    "category": "compound",
+    "movementPattern": "squat",
+    "primaryMuscles": [
+      "quads",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "calves",
+      "core"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": true,
+    "instructions": "Step into a lunge, lower under control, then drive through the front foot to stand.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/r0q02oljky7udlwe2tiui/Lunges-Side.MP4?rlkey=u1p5slceu0kk5b46ljqgqirdd&st=5go76qqv&dl=0"
+  },
+  {
+    "name": "Barbell Skull Crusher",
+    "slug": "barbell-skull-crusher",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Lie back, keep upper arms steady, lower bar toward forehead, then extend elbows.",
+    "videoURLString": "https://vimeo.com/1057291135"
+  },
+  {
+    "name": "Lying Dumbbell Triceps Extensions",
+    "slug": "lying-dumbbell-triceps-extension",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 2.5,
+    "isUnilateral": false,
+    "instructions": "Lie back, lower dumbbells beside your head, then extend elbows without moving shoulders."
+  },
+  {
+    "name": "Overhead Triceps Extension",
+    "slug": "overhead-triceps-extension",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "core"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
+    "progressionIncrementLb": 2.5,
+    "isUnilateral": false,
+    "instructions": "Keep elbows high, lower weight behind head, then extend to lockout under control.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/xlhbrg4h3hjnm5ozlnlsl/OH-Triceps-Extension.MP4?rlkey=6g0r4w49ub2bxbe7w3235sb7t&st=7nvv3a1e&dl=0"
+  },
+  {
+    "name": "High Incline Shrugs",
+    "slug": "high-incline-shrug",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Lie chest-down on a high incline bench, shrug shoulders up, pause, then lower.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/wz8dqqgyq70yqw8ufdhb3/High-Incline-Shrug.MP4?rlkey=ysj1mjyzv7xvs2u9k88lsjtbv&st=7yb0gtqh&dl=0"
+  },
+  {
+    "name": "Barbell Shrug",
+    "slug": "barbell-shrug",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "progressionIncrementLb": 10,
+    "isUnilateral": false,
+    "instructions": "Hold bar at thighs, shrug straight up, pause, then lower to a full stretch.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/u3ur3g5juulgrvpfb7ckz/Shrug-Rear.MP4?rlkey=8a91jzcq442n8xfybq9a7jpya&st=vbwlxg4c&dl=0"
+  },
+  {
+    "name": "Decline Sit-Up",
+    "slug": "decline-sit-up",
+    "category": "isolation",
+    "movementPattern": "core",
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "bodyweight",
+      "bench"
+    ],
+    "progressionIncrementLb": 0,
+    "isUnilateral": false,
+    "instructions": "Set feet, curl torso up from the decline bench, then lower under control."
+  },
+  {
+    "name": "Single-Leg Dumbbell Calf Raise",
+    "slug": "single-leg-dumbbell-calf-raise",
+    "category": "isolation",
+    "movementPattern": "squat",
+    "primaryMuscles": [
+      "calves"
+    ],
+    "secondaryMuscles": [
+      "core"
+    ],
+    "equipment": [
+      "dumbbell"
+    ],
+    "progressionIncrementLb": 2.5,
+    "isUnilateral": true,
+    "instructions": "Hold support, lower one heel into a stretch, raise high, pause, then lower."
+  },
+  {
+    "name": "Barbell Squat",
+    "slug": "barbell-squat",
+    "category": "compound",
+    "movementPattern": "squat",
+    "primaryMuscles": [
+      "quads",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core",
+      "lowerBack"
+    ],
+    "equipment": [
+      "barbell",
+      "rack"
+    ],
+    "progressionIncrementLb": 10,
+    "isUnilateral": false,
+    "instructions": "Set bar on upper back, brace, squat under control, then drive up through midfoot.",
+    "videoURLString": "https://vimeo.com/1057291169"
+  },
+  {
+    "name": "Machine Row",
+    "slug": "machine-row",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rearDelts"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Set chest or torso support, row handles toward ribs, squeeze, then return slowly.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/einjdf45tbtq35dbn3gb2/Machine-Row-Side.MP4?rlkey=gcfo2frkvoqf5am2q3qo6uagn&st=0doxbg1h&dl=0"
+  },
+  {
+    "name": "One-Arm Dumbbell Row",
+    "slug": "one-arm-dumbbell-row",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rearDelts"
+    ],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 2.5,
+    "isUnilateral": true,
+    "instructions": "Brace on bench, row one dumbbell toward hip, pause, then lower fully.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/o94p291klz9to6gk57c48/DB-Row-Side.MOV?rlkey=4uhxgjsq2ca9uf35la0gk7k8u&st=wpqjdtad&dl=0"
+  },
+  {
+    "name": "Pendlay Row",
+    "slug": "pendlay-row",
+    "category": "compound",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "lats",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rearDelts",
+      "lowerBack"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Start bar on floor, brace, row to torso, then return bar to floor each rep.",
+    "videoURLString": "https://vimeo.com/1057291058"
+  },
+  {
+    "name": "Seated Smith Machine Shoulder Press",
+    "slug": "seated-smith-machine-shoulder-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "frontDelts",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "sideDelts"
+    ],
+    "equipment": [
+      "machine",
+      "bench"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Sit tall under the Smith bar, press overhead, then lower to shoulder level.",
+    "videoURLString": "https://vimeo.com/1057291159"
+  },
+  {
+    "name": "Seated Dumbbell Shoulder Press",
+    "slug": "seated-dumbbell-shoulder-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "frontDelts",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "sideDelts"
+    ],
+    "equipment": [
+      "dumbbell",
+      "bench"
+    ],
+    "progressionIncrementLb": 2.5,
+    "isUnilateral": false,
+    "instructions": "Sit tall, press dumbbells overhead, then lower to shoulder level under control.",
+    "videoURLString": "https://vimeo.com/1057290987"
+  },
+  {
+    "name": "Barbell Deadlift",
+    "slug": "barbell-deadlift",
+    "category": "compound",
+    "movementPattern": "hinge",
+    "primaryMuscles": [
+      "glutes",
+      "hamstrings",
+      "lowerBack"
+    ],
+    "secondaryMuscles": [
+      "quads",
+      "traps",
+      "lats"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "progressionIncrementLb": 10,
+    "isUnilateral": false,
+    "instructions": "Set bar over midfoot, brace, push floor away, and stand tall without overextending.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/6cdjpoo5zbrdazgunkr5h/Deadlift-SIDE-1.mov?rlkey=66qjn1jan177om91q6buiisvb&st=yjkhioey&dl=0"
+  },
+  {
+    "name": "Landmine Press",
+    "slug": "landmine-press",
+    "category": "compound",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "frontDelts",
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "chest",
+      "core"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": true,
+    "instructions": "Hold bar at shoulder, brace, press up and forward, then lower to shoulder under control."
+  },
+  {
+    "name": "Behind-the-Back Cable Curl",
+    "slug": "behind-the-back-cable-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 2.5,
+    "isUnilateral": true,
+    "instructions": "Stand ahead of low cable, let arm stretch behind, curl up, then lower slowly.",
+    "videoURLString": "https://www.dropbox.com/scl/fi/zr11erwyy4w76sxwb4c8v/Bayesian-Curl-3.MOV?rlkey=yjzl3llx5ruzj791979qec2fv&st=geg6a9tg&dl=0"
+  },
+  {
+    "name": "Preacher Curl",
+    "slug": "preacher-curl",
+    "category": "isolation",
+    "movementPattern": "pull",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "machine",
+      "bench"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Set upper arms on pad, curl up without lifting elbows, then lower slowly.",
+    "videoURLString": "https://vimeo.com/1057291070"
+  },
+  {
+    "name": "Triceps Pushdown",
+    "slug": "triceps-pushdown",
+    "category": "isolation",
+    "movementPattern": "push",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "cable"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Pin elbows by sides, press handle to lockout, then return under control.",
+    "videoURLString": "https://vimeo.com/1057291099"
   }
 ]

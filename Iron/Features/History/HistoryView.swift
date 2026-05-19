@@ -112,10 +112,10 @@ private struct WorkoutRow: View {
         return "\(m)m"
     }
 
-    private var setCount: Int { workout.setEntries.count }
+    private var setCount: Int { workout.setEntries.filter { $0.setType != .warmup }.count }
 
     private var totalVolume: Double {
-        workout.setEntries.reduce(0.0) { acc, set in
+        workout.setEntries.filter { $0.setType != .warmup }.reduce(0.0) { acc, set in
             acc + Double(set.reps) * (set.weightLb ?? 0)
         }
     }
