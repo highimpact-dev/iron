@@ -7,7 +7,7 @@ struct IronApp: App {
 
     init() {
         do {
-            let schema = Schema(IronSchemaV2.models)
+            let schema = Schema(IronSchemaV3.models)
             let config = ModelConfiguration(
                 schema: schema,
                 isStoredInMemoryOnly: false

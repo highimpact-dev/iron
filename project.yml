@@ -28,8 +28,16 @@ targets:
       - path: Shared
     dependencies:
       - target: IronWidget
+      - target: IronShareExtension
       - target: IronWatch
         embed: true
+    info:
+      path: Iron/Info.plist
+      properties:
+        CFBundleURLTypes:
+          - CFBundleURLName: dev.highimpact.iron
+            CFBundleURLSchemes:
+              - iron
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: dev.highimpact.iron
@@ -45,12 +53,25 @@ targets:
         INFOPLIST_KEY_NSHealthShareUsageDescription: "Iron reads your workouts, heart rate, and body metrics from Health to track lifting and conditioning progress."
         INFOPLIST_KEY_NSHealthUpdateUsageDescription: "Iron writes completed workouts back to Health so your training is in one place."
         INFOPLIST_KEY_NSMotionUsageDescription: "Iron uses motion data to detect rest periods and rep tempo."
+        INFOPLIST_KEY_NSMicrophoneUsageDescription: "Iron records short meal descriptions so Gemini can draft nutrition logs."
         INFOPLIST_KEY_NSSupportsLiveActivities: YES
         INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates: YES
     entitlements:
       path: Iron/Iron.entitlements
       properties:
         com.apple.developer.healthkit: true
+
+  IronTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: IronTests
+    dependencies:
+      - target: Iron
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.highimpact.iron.tests
+        GENERATE_INFOPLIST_FILE: YES
 
   IronWidget:
     type: app-extension
@@ -73,6 +94,32 @@ targets:
         TARGETED_DEVICE_FAMILY: "1,2"
         SUPPORTS_MACCATALYST: NO
         ENABLE_PREVIEWS: YES
+        SKIP_INSTALL: YES
+
+  IronShareExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: IronShareExtension
+      - path: Shared/FitProfileImport.swift
+    info:
+      path: IronShareExtension/Info.plist
+      properties:
+        CFBundleDisplayName: Iron
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.share-services
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).ShareViewController
+          NSExtensionAttributes:
+            NSExtensionActivationRule:
+              NSExtensionActivationSupportsFileWithMaxCount: 1
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: dev.highimpact.iron.share
+        PRODUCT_NAME: IronShareExtension
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SUPPORTS_MACCATALYST: NO
         SKIP_INSTALL: YES
 
   IronWatch:
@@ -101,6 +148,8 @@ schemes:
       config: Debug
     test:
       config: Debug
+      targets:
+        - IronTests
     profile:
       config: Release
     analyze:

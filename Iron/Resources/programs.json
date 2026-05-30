@@ -228,5 +228,443 @@
         ]
       }
     ]
+  },
+  {
+    "name": "TriCon 4-Day Program for Men Over 50",
+    "author": "Gary Walker",
+    "programDescription": "A 30-day, four-day hypertrophy program built around TriCon training: joint-friendly tension, controlled negatives, isometric holds, and slow reps. TriCon sets use 9 reps: first 3 explosive reps with a 2-3 second lower, next 3 reps with a hold, and final 3 slow reps with a 3 second lower and 3 second lift. Use the PDF split as written, keep loads controlled, track weight, reps, sets, and recovery notes, then switch programs after 30 days.",
+    "isBuiltIn": true,
+    "weeksLength": 4,
+    "daysPerWeek": 4,
+    "days": [
+      {
+        "name": "Day 1 - Push",
+        "dayIndex": 0,
+        "notes": "Chest, shoulders, and triceps. TriCon movements use 5-second holds from the program PDF. Use controlled joint-friendly loads and write down weight, completed reps, total sets, and recovery notes.",
+        "exercises": [
+          {
+            "exerciseSlug": "incline-dumbbell-press",
+            "orderIndex": 0,
+            "targetSets": 3,
+            "targetRepsMin": 8,
+            "targetRepsMax": 10,
+            "restSeconds": 120,
+            "notes": "Standard controlled sets."
+          },
+          {
+            "exerciseSlug": "cable-flye",
+            "orderIndex": 1,
+            "targetSets": 3,
+            "targetRepsMin": 9,
+            "targetRepsMax": 9,
+            "restSeconds": 90,
+            "intensityTechnique": "TriCon",
+            "substitutionOption1Name": "Bottom-Half Seated Cable Flye",
+            "substitutionOption2Name": "Pec Deck",
+            "notes": "TriCon high-to-low cable fly: 3 explosive reps with 2-3 second lowers, 3 reps with 5-second holds at peak contraction, then 3 slow reps with 3 seconds down and 3 seconds up."
+          },
+          {
+            "exerciseSlug": "flat-dumbbell-chest-press",
+            "orderIndex": 2,
+            "targetSets": 3,
+            "targetRepsMin": 10,
+            "targetRepsMax": 12,
+            "restSeconds": 120,
+            "notes": "Standard controlled sets."
+          },
+          {
+            "exerciseSlug": "dumbbell-lateral-raise",
+            "orderIndex": 3,
+            "targetSets": 3,
+            "targetRepsMin": 9,
+            "targetRepsMax": 9,
+            "restSeconds": 90,
+            "intensityTechnique": "TriCon",
+            "substitutionOption1Name": "Cable Lateral Raise",
+            "substitutionOption2Name": "Lateral Raise",
+            "notes": "TriCon lateral raise: 3 explosive reps with 2-3 second lowers, 3 reps with 5-second holds near shoulder height, then 3 slow reps with 3 seconds down and 3 seconds up."
+          },
+          {
+            "exerciseSlug": "dumbbell-seated-shoulder-press",
+            "orderIndex": 4,
+            "targetSets": 2,
+            "targetRepsMin": 12,
+            "targetRepsMax": 15,
+            "restSeconds": 120,
+            "substitutionOption1Name": "Seated Dumbbell Shoulder Press",
+            "substitutionOption2Name": "Machine Shoulder Press",
+            "notes": "Standard controlled dumbbell overhead press."
+          },
+          {
+            "exerciseSlug": "triceps-pushdown",
+            "orderIndex": 5,
+            "targetSets": 2,
+            "targetRepsMin": 12,
+            "targetRepsMax": 15,
+            "restSeconds": 90,
+            "substitutionOption1Name": "Triceps Pressdown (Bar)",
+            "substitutionOption2Name": "Cable Overhead Triceps Extension",
+            "notes": "Rope triceps pressdowns."
+          },
+          {
+            "exerciseSlug": "dumbbell-skull-crusher",
+            "orderIndex": 6,
+            "targetSets": 2,
+            "targetRepsMin": 10,
+            "targetRepsMax": 12,
+            "restSeconds": 90,
+            "substitutionOption1Name": "Lying Dumbbell Triceps Extensions",
+            "substitutionOption2Name": "Overhead Triceps Extension",
+            "notes": "Standard controlled sets."
+          }
+        ]
+      },
+      {
+        "name": "Day 2 - Pull",
+        "dayIndex": 1,
+        "notes": "Back and biceps. TriCon movements use 5-second holds from the program PDF. Keep the holds strict and avoid turning the sets into heavy momentum work.",
+        "exercises": [
+          {
+            "exerciseSlug": "lat-pulldown",
+            "orderIndex": 0,
+            "targetSets": 3,
+            "targetRepsMin": 9,
+            "targetRepsMax": 9,
+            "restSeconds": 120,
+            "intensityTechnique": "TriCon",
+            "substitutionOption1Name": "Neutral-Grip Pulldown",
+            "substitutionOption2Name": "Dual-Handle Lat Pulldown",
+            "notes": "TriCon lat pulldown: 3 explosive reps with 2-3 second controlled returns, 3 reps with 5-second holds at the contracted position, then 3 slow reps with 3 seconds each direction."
+          },
+          {
+            "exerciseSlug": "seated-cable-row",
+            "orderIndex": 1,
+            "targetSets": 3,
+            "targetRepsMin": 9,
+            "targetRepsMax": 9,
+            "restSeconds": 120,
+            "intensityTechnique": "TriCon",
+            "substitutionOption1Name": "Chest-Supported Row",
+            "substitutionOption2Name": "Machine Row",
+            "notes": "TriCon seated cable row: 3 explosive reps with controlled returns, 3 reps with 5-second squeezes, then 3 slow reps with 3 seconds out and 3 seconds in."
+          },
+          {
+            "exerciseSlug": "chest-supported-row",
+            "orderIndex": 2,
+            "targetSets": 2,
+            "targetRepsMin": 10,
+            "targetRepsMax": 12,
+            "restSeconds": 120,
+            "substitutionOption1Name": "Dumbbell Row",
+            "substitutionOption2Name": "Chest-Supported T-Bar Row",
+            "notes": "Chest-supported dumbbell rows or machine rows."
+          },
+          {
+            "exerciseSlug": "bicep-curl",
+            "orderIndex": 3,
+            "targetSets": 2,
+            "targetRepsMin": 10,
+            "targetRepsMax": 12,
+            "restSeconds": 90,
+            "substitutionOption1Name": "Dumbbell Supinated Curl",
+            "substitutionOption2Name": "EZ Bar Curl",
+            "notes": "Dumbbell curls."
+          },
+          {
+            "exerciseSlug": "incline-dumbbell-curl",
+            "orderIndex": 4,
+            "targetSets": 2,
+            "targetRepsMin": 10,
+            "targetRepsMax": 10,
+            "restSeconds": 90,
+            "substitutionOption1Name": "Seated Cable Curl",
+            "substitutionOption2Name": "Preacher Curl",
+            "notes": "Standard controlled sets."
+          },
+          {
+            "exerciseSlug": "high-incline-shrug",
+            "orderIndex": 5,
+            "targetSets": 3,
+            "targetRepsMin": 9,
+            "targetRepsMax": 9,
+            "restSeconds": 90,
+            "intensityTechnique": "TriCon",
+            "substitutionOption1Name": "Machine Shrug",
+            "substitutionOption2Name": "Barbell Shrug",
+            "notes": "TriCon dumbbell shrugs: 3 explosive reps, 3 reps with 5-second peak-contraction holds, then 3 slow reps."
+          }
+        ]
+      },
+      {
+        "name": "Day 4 - Legs",
+        "dayIndex": 2,
+        "notes": "Quads, hamstrings, and glutes. Day 3 is rest or active recovery: walking, biking, stretching, foam rolling, or light mobility drills.",
+        "exercises": [
+          {
+            "exerciseSlug": "barbell-romanian-deadlift",
+            "orderIndex": 0,
+            "targetSets": 3,
+            "targetRepsMin": 10,
+            "targetRepsMax": 12,
+            "restSeconds": 150,
+            "substitutionOption1Name": "Dumbbell Romanian Deadlift",
+            "substitutionOption2Name": "Romanian Deadlift",
+            "notes": "Standard controlled Romanian deadlifts."
+          },
+          {
+            "exerciseSlug": "leg-press",
+            "orderIndex": 1,
+            "targetSets": 3,
+            "targetRepsMin": 9,
+            "targetRepsMax": 9,
+            "restSeconds": 150,
+            "intensityTechnique": "TriCon",
+            "substitutionOption1Name": "Hack Squat",
+            "substitutionOption2Name": "Smith Machine Squat",
+            "notes": "TriCon leg press: 3 explosive reps with 2-3 second lowers, 3 reps with 5-second mid-range holds, then 3 slow reps with 3 seconds down and 3 seconds up."
+          },
+          {
+            "exerciseSlug": "dumbbell-lunge",
+            "orderIndex": 2,
+            "targetSets": 2,
+            "targetRepsMin": 12,
+            "targetRepsMax": 12,
+            "restSeconds": 120,
+            "substitutionOption1Name": "Walking Lunge",
+            "substitutionOption2Name": "Bulgarian Split Squat",
+            "notes": "Dumbbell reverse lunges. Log left and right sides separately."
+          },
+          {
+            "exerciseSlug": "lying-leg-curl",
+            "orderIndex": 3,
+            "targetSets": 3,
+            "targetRepsMin": 9,
+            "targetRepsMax": 9,
+            "restSeconds": 90,
+            "intensityTechnique": "TriCon",
+            "substitutionOption1Name": "Seated Leg Curl",
+            "substitutionOption2Name": "Single-Leg Lying Leg Curl",
+            "notes": "TriCon hamstring curl: 3 explosive reps with controlled lowers, 3 reps with 5-second peak-contraction holds, then 3 slow reps."
+          },
+          {
+            "exerciseSlug": "barbell-hip-thrust",
+            "orderIndex": 4,
+            "targetSets": 3,
+            "targetRepsMin": 15,
+            "targetRepsMax": 15,
+            "restSeconds": 120,
+            "substitutionOption1Name": "Hip Thrust",
+            "substitutionOption2Name": "Dumbbell Single-Leg Hip Thrust",
+            "notes": "Glute bridge or hip thrust."
+          },
+          {
+            "exerciseSlug": "standing-calf-raise",
+            "orderIndex": 5,
+            "targetSets": 3,
+            "targetRepsMin": 15,
+            "targetRepsMax": 20,
+            "restSeconds": 90,
+            "substitutionOption1Name": "Leg Press Calf Press",
+            "substitutionOption2Name": "Single-Leg Dumbbell Calf Raise",
+            "notes": "Standard controlled sets with a full stretch and hard top contraction."
+          }
+        ]
+      },
+      {
+        "name": "Day 5 - Upper Body Circuit",
+        "dayIndex": 3,
+        "notes": "TriCon superset style. Complete 3 circuits: Circuit A pairs TriCon push-ups with dumbbell bench press; Circuit B pairs dumbbell rows with TriCon seated cable rows; Circuit C runs TriCon overhead press, lateral raises, dumbbell curls, and dumbbell skullcrushers. Optional core finisher follows.",
+        "exercises": [
+          {
+            "exerciseSlug": "push-up",
+            "orderIndex": 0,
+            "targetSets": 3,
+            "targetRepsMin": 9,
+            "targetRepsMax": 9,
+            "restSeconds": 45,
+            "intensityTechnique": "TriCon",
+            "substitutionOption1Name": "Dumbbell Bench Press",
+            "substitutionOption2Name": "Machine Chest Press",
+            "notes": "Circuit A. TriCon push-ups with 3-second holds: 3 explosive reps, 3 hold reps, then 3 slow reps."
+          },
+          {
+            "exerciseSlug": "dumbbell-bench-press",
+            "orderIndex": 1,
+            "targetSets": 3,
+            "targetRepsMin": 10,
+            "targetRepsMax": 12,
+            "restSeconds": 90,
+            "substitutionOption1Name": "Flat Dumbbell Chest Press",
+            "substitutionOption2Name": "Machine Chest Press",
+            "notes": "Circuit A. Perform after TriCon push-ups."
+          },
+          {
+            "exerciseSlug": "dumbbell-row",
+            "orderIndex": 2,
+            "targetSets": 3,
+            "targetRepsMin": 8,
+            "targetRepsMax": 10,
+            "restSeconds": 45,
+            "substitutionOption1Name": "One-Arm Dumbbell Row",
+            "substitutionOption2Name": "Chest-Supported Row",
+            "notes": "Circuit B. Per arm; log left and right sides separately."
+          },
+          {
+            "exerciseSlug": "seated-cable-row",
+            "orderIndex": 3,
+            "targetSets": 3,
+            "targetRepsMin": 9,
+            "targetRepsMax": 9,
+            "restSeconds": 90,
+            "intensityTechnique": "TriCon",
+            "substitutionOption1Name": "Machine Row",
+            "substitutionOption2Name": "Chest-Supported Row",
+            "notes": "Circuit B. TriCon seated cable row with 3-second holds."
+          },
+          {
+            "exerciseSlug": "seated-dumbbell-shoulder-press",
+            "orderIndex": 4,
+            "targetSets": 3,
+            "targetRepsMin": 9,
+            "targetRepsMax": 9,
+            "restSeconds": 45,
+            "intensityTechnique": "TriCon",
+            "substitutionOption1Name": "Machine Shoulder Press",
+            "substitutionOption2Name": "Seated Smith Machine Shoulder Press",
+            "notes": "Circuit C. TriCon overhead press with dumbbells or a machine and 3-second holds."
+          },
+          {
+            "exerciseSlug": "lateral-raise",
+            "orderIndex": 5,
+            "targetSets": 3,
+            "targetRepsMin": 15,
+            "targetRepsMax": 20,
+            "restSeconds": 45,
+            "substitutionOption1Name": "Dumbbell Lateral Raise",
+            "substitutionOption2Name": "Cable Lateral Raise",
+            "notes": "Circuit C. Standard controlled sets."
+          },
+          {
+            "exerciseSlug": "bicep-curl",
+            "orderIndex": 6,
+            "targetSets": 3,
+            "targetRepsMin": 15,
+            "targetRepsMax": 20,
+            "restSeconds": 45,
+            "substitutionOption1Name": "Dumbbell Supinated Curl",
+            "substitutionOption2Name": "Cable Rope Hammer Curl",
+            "notes": "Circuit C. Standard controlled sets."
+          },
+          {
+            "exerciseSlug": "dumbbell-skull-crusher",
+            "orderIndex": 7,
+            "targetSets": 3,
+            "targetRepsMin": 12,
+            "targetRepsMax": 15,
+            "restSeconds": 90,
+            "substitutionOption1Name": "Lying Dumbbell Triceps Extensions",
+            "substitutionOption2Name": "Cable Overhead Triceps Extension",
+            "notes": "Circuit C. Standard controlled sets."
+          },
+          {
+            "exerciseSlug": "hanging-leg-raise",
+            "orderIndex": 8,
+            "targetSets": 3,
+            "targetRepsMin": 12,
+            "targetRepsMax": 12,
+            "restSeconds": 45,
+            "substitutionOption1Name": "Lying Leg Raise",
+            "substitutionOption2Name": "Ab Wheel Rollout",
+            "notes": "Optional core finisher."
+          },
+          {
+            "exerciseSlug": "russian-twist",
+            "orderIndex": 9,
+            "targetSets": 3,
+            "targetRepsMin": 20,
+            "targetRepsMax": 20,
+            "restSeconds": 45,
+            "substitutionOption1Name": "Bicycle Crunch",
+            "substitutionOption2Name": "Cable Crunch",
+            "notes": "Optional core finisher."
+          },
+          {
+            "exerciseSlug": "plank",
+            "orderIndex": 10,
+            "targetSets": 3,
+            "targetRepsMin": 45,
+            "targetRepsMax": 45,
+            "restSeconds": 45,
+            "substitutionOption1Name": "Crunch",
+            "substitutionOption2Name": "Machine Crunch",
+            "notes": "Optional core finisher. Track the 45-second hold in the reps field as 45."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Men Over 50 Arm Growth",
+    "author": "Gary Walker",
+    "programDescription": "A one-day arm-size specialization based on Gary Walker's arm growth video for men over 50. The method prioritizes mechanical tension, strict execution, controlled eccentrics, static holds, 21s, and mechanical drop sets instead of heavy cheat curls. Use joint-friendly loads, keep the elbows quiet, stop swinging, and train near failure with control.",
+    "isBuiltIn": true,
+    "weeksLength": null,
+    "daysPerWeek": 1,
+    "days": [
+      {
+        "name": "Arm Growth",
+        "dayIndex": 0,
+        "notes": "Focus on biceps execution and arm thickness. Keep shoulders still, avoid lower-back swing, control the eccentric, and squeeze hard at the top. Rest long enough to keep reps strict.",
+        "exercises": [
+          {
+            "exerciseSlug": "incline-dumbbell-curl",
+            "orderIndex": 0,
+            "targetSets": 4,
+            "targetRepsMin": 9,
+            "targetRepsMax": 9,
+            "restSeconds": 120,
+            "intensityTechnique": "TriCon",
+            "substitutionOption1Name": "Behind-the-Back Cable Curl",
+            "substitutionOption2Name": "Bayesian Cable Curl",
+            "notes": "Use 3-4 sets. TriCon set: first 3 reps controlled but explosive, next 3 reps with 5-10 second holds in the hardest position, final 3 reps slow through a full range under constant tension. Use 3 sets if recovery is limited."
+          },
+          {
+            "exerciseSlug": "hammer-curl",
+            "orderIndex": 1,
+            "targetSets": 3,
+            "targetRepsMin": 10,
+            "targetRepsMax": 12,
+            "restSeconds": 90,
+            "substitutionOption1Name": "Cable Rope Hammer Curl",
+            "substitutionOption2Name": "Dumbbell Concentration Curl",
+            "notes": "Neutral-grip curls for brachialis, brachioradialis, forearm thickness, and elbow-friendly arm work. Control the eccentric and squeeze hard at the top."
+          },
+          {
+            "exerciseSlug": "bicep-curl",
+            "orderIndex": 2,
+            "targetSets": 3,
+            "targetRepsMin": 21,
+            "targetRepsMax": 21,
+            "restSeconds": 120,
+            "intensityTechnique": "21s",
+            "substitutionOption1Name": "EZ Bar Curl",
+            "substitutionOption2Name": "Standing Barbell Curl",
+            "notes": "Perform 2-3 rounds of 21s: 7 top-half reps from mid-range to full contraction, 7 bottom-half reps from stretch to mid-range, then 7 full-range reps from complete stretch to a hard squeeze."
+          },
+          {
+            "exerciseSlug": "single-arm-cable-curl",
+            "orderIndex": 3,
+            "targetSets": 3,
+            "targetRepsMin": 8,
+            "targetRepsMax": 15,
+            "restSeconds": 0,
+            "intensityTechnique": "Mechanical Drop Set",
+            "substitutionOption1Name": "Dumbbell Supinated Curl",
+            "substitutionOption2Name": "Seated Cable Curl",
+            "notes": "Finisher. Pick a weight for about 8 clean reps to failure, immediately drop 10-15 lb for another 8 reps, then drop once more and perform as many reps as possible to true failure. No rest and no momentum."
+          }
+        ]
+      }
+    ]
   }
 ]

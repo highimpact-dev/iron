@@ -6,7 +6,9 @@ struct SettingsView: View {
     @AppStorage(HealthKitPreferenceKeys.writeBodyMetrics) private var writeBodyMetrics = false
     @AppStorage(HealthKitPreferenceKeys.readNutrition) private var readNutrition = false
     @AppStorage(HealthKitPreferenceKeys.writeNutrition) private var writeNutrition = false
+    @AppStorage(HealthKitPreferenceKeys.readDailyHealth) private var readDailyHealth = false
     @AppStorage(USDAFoodDataPreferenceKeys.apiKey) private var usdaAPIKey = ""
+    @AppStorage(GeminiNutritionPreferenceKeys.apiKey) private var geminiAPIKey = ""
 
     @State private var healthStatus = HealthKitService.shared.authorizationSummary()
     @State private var isRequestingHealthAccess = false
@@ -28,6 +30,8 @@ struct SettingsView: View {
                         .disabled(!HealthKitService.isAvailable || isRequestingHealthAccess)
                     Toggle("Write nutrition", isOn: $writeNutrition)
                         .disabled(!HealthKitService.isAvailable || isRequestingHealthAccess)
+                    Toggle("Read daily health", isOn: $readDailyHealth)
+                        .disabled(!HealthKitService.isAvailable || isRequestingHealthAccess)
 
                     Button {
                         Task { await requestHealthAccess() }
@@ -41,7 +45,7 @@ struct SettingsView: View {
                 } header: {
                     Text("HealthKit")
                 } footer: {
-                    Text("Iron writes workout summaries to Health. Detailed set, rep, RPE, RIR, and bodybuilding measurements remain in Iron because Health does not have first-class fields for them.")
+                    Text("Iron writes workout summaries to Health and can read Apple Health and Watch data for the Today dashboard. Detailed set, rep, RPE, RIR, and bodybuilding measurements remain in Iron because Health does not have first-class fields for them.")
                 }
 
                 Section("Food Databases") {
@@ -49,6 +53,15 @@ struct SettingsView: View {
                         .textInputAutocapitalization(.never)
                         .autocorrectionDisabled()
                     Text("USDA FoodData Central powers richer generic food and micronutrient lookup. Open Food Facts remains available for packaged food barcode fallback.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+
+                Section("AI Voice Logging") {
+                    SecureField("Gemini API key", text: $geminiAPIKey)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                    Text("Prototype-only local key for spoken meal logging. Production should move Gemini calls server-side or use short-lived Live API tokens.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -73,6 +86,9 @@ struct SettingsView: View {
             .onChange(of: writeNutrition) { _, enabled in
                 if enabled { Task { await requestHealthAccess() } }
             }
+            .onChange(of: readDailyHealth) { _, enabled in
+                if enabled { Task { await requestHealthAccess() } }
+            }
             .alert(
                 "HealthKit access failed",
                 isPresented: Binding(
@@ -90,7 +106,7 @@ struct SettingsView: View {
     }
 
     private var noHealthTypesEnabled: Bool {
-        !writeWorkouts && !readBodyMetrics && !writeBodyMetrics && !readNutrition && !writeNutrition
+        !writeWorkouts && !readBodyMetrics && !writeBodyMetrics && !readNutrition && !writeNutrition && !readDailyHealth
     }
 
     private func requestHealthAccess() async {
@@ -116,7 +132,8 @@ struct SettingsView: View {
                 writeBodyMetrics: writeBodyMetrics,
                 writeWorkouts: writeWorkouts,
                 readNutrition: readNutrition,
-                writeNutrition: writeNutrition
+                writeNutrition: writeNutrition,
+                readDailyHealth: readDailyHealth
             )
         } catch {
             healthError = error.localizedDescription

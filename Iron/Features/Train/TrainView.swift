@@ -7,6 +7,8 @@ struct TrainView: View {
     private var activeWorkouts: [Workout]
     @Query(filter: #Predicate<Program> { $0.deletedAt == nil }, sort: \Program.name)
     private var programs: [Program]
+    @Query(sort: \DailyHealthSnapshot.dayStart, order: .reverse)
+    private var healthSnapshots: [DailyHealthSnapshot]
 
     @State private var path = NavigationPath()
     @State private var isCreatingProgram = false
@@ -49,6 +51,12 @@ struct TrainView: View {
 
     private var programList: some View {
         List {
+            if let snapshot = todayHealthSnapshot {
+                Section {
+                    TrainingReadinessBanner(analysis: TodayDashboardAnalysis(snapshot: snapshot, history: healthSnapshots))
+                }
+            }
+
             if programs.isEmpty {
                 ContentUnavailableView(
                     "No programs yet",
@@ -65,6 +73,31 @@ struct TrainView: View {
                 }
             }
         }
+    }
+
+    private var todayHealthSnapshot: DailyHealthSnapshot? {
+        let today = Calendar.current.startOfDay(for: Date())
+        return healthSnapshots.first { Calendar.current.isDate($0.dayStart, inSameDayAs: today) } ?? healthSnapshots.first
+    }
+}
+
+private struct TrainingReadinessBanner: View {
+    let analysis: TodayDashboardAnalysis
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Label(analysis.readiness.title, systemImage: analysis.readiness.systemImage)
+                .font(.headline)
+            Text(analysis.readiness.action)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+            if let firstDetail = analysis.readiness.details.first {
+                Text(firstDetail)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+        }
+        .padding(.vertical, 4)
     }
 }
 
@@ -99,5 +132,5 @@ private struct ProgramRow: View {
 
 #Preview {
     TrainView()
-        .modelContainer(for: IronSchemaV2.models, inMemory: true)
+        .modelContainer(for: IronSchemaV3.models, inMemory: true)
 }

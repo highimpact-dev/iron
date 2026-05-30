@@ -1,6 +1,6 @@
 import Foundation
 
-struct OpenFoodFactsFood: Identifiable, Hashable {
+struct OpenFoodFactsFood: Identifiable, Hashable, Sendable {
     let id: String
     let barcode: String
     let name: String

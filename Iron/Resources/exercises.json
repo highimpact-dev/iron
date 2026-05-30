@@ -2656,5 +2656,21 @@
     "isUnilateral": false,
     "instructions": "Pin elbows by sides, press handle to lockout, then return under control.",
     "videoURLString": "https://vimeo.com/1057291099"
+  },
+  {
+    "name": "Russian Twist",
+    "slug": "russian-twist",
+    "category": "isolation",
+    "movementPattern": "core",
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [],
+    "equipment": [
+      "bodyweight"
+    ],
+    "progressionIncrementLb": 5,
+    "isUnilateral": false,
+    "instructions": "Sit tall with torso leaned back, brace, rotate side to side under control, and keep the movement through the trunk."
   }
 ]

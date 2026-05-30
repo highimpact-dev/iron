@@ -7,6 +7,7 @@ enum HealthKitPreferenceKeys {
     static let writeBodyMetrics = "healthkit.writeBodyMetrics"
     static let readNutrition = "healthkit.readNutrition"
     static let writeNutrition = "healthkit.writeNutrition"
+    static let readDailyHealth = "healthkit.readDailyHealth"
 }
 
 struct HealthWorkoutSnapshot {
@@ -155,7 +156,8 @@ final class HealthKitService {
         writeBodyMetrics: Bool,
         writeWorkouts: Bool,
         readNutrition: Bool = false,
-        writeNutrition: Bool = false
+        writeNutrition: Bool = false,
+        readDailyHealth: Bool = false
     ) async throws {
         guard Self.isAvailable else { throw HealthKitError.unavailable }
 
@@ -182,6 +184,10 @@ final class HealthKitService {
             readTypes.formUnion(nutritionTypes)
         }
 
+        if readDailyHealth {
+            readTypes.formUnion(supportedDailyHealthTypes())
+        }
+
         guard !shareTypes.isEmpty || !readTypes.isEmpty else { return }
         try await healthStore.requestAuthorization(toShare: shareTypes, read: readTypes)
     }
@@ -194,15 +200,19 @@ final class HealthKitService {
             .map { healthStore.authorizationStatus(for: $0) }
         let nutritionStatus = supportedNutritionQuantityTypes()
             .map { healthStore.authorizationStatus(for: $0) }
+        let dailyHealthStatus = supportedDailyHealthQuantityTypes()
+            .map { healthStore.authorizationStatus(for: $0) }
 
         if workoutStatus == .sharingAuthorized
             || bodyStatus.contains(.sharingAuthorized)
-            || nutritionStatus.contains(.sharingAuthorized) {
+            || nutritionStatus.contains(.sharingAuthorized)
+            || dailyHealthStatus.contains(.sharingAuthorized) {
             return "Connected"
         }
         if workoutStatus == .sharingDenied
             || bodyStatus.contains(.sharingDenied)
-            || nutritionStatus.contains(.sharingDenied) {
+            || nutritionStatus.contains(.sharingDenied)
+            || dailyHealthStatus.contains(.sharingDenied) {
             return "Limited"
         }
         return "Not connected"
@@ -375,6 +385,73 @@ final class HealthKitService {
             .sorted { $0.loggedAt > $1.loggedAt }
     }
 
+    func fetchDailyHealthInputs(days: Int = 60) async throws -> [DailyHealthInput] {
+        guard Self.isAvailable else { throw HealthKitError.unavailable }
+        guard UserDefaults.standard.bool(forKey: HealthKitPreferenceKeys.readDailyHealth) else { return [] }
+
+        try await requestAuthorization(
+            readBodyMetrics: false,
+            writeBodyMetrics: false,
+            writeWorkouts: false,
+            readDailyHealth: true
+        )
+
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let start = calendar.date(byAdding: .day, value: -(days - 1), to: today) ?? today
+        let end = calendar.date(byAdding: .day, value: 1, to: today) ?? Date()
+
+        async let sleep = fetchSleepByDay(start: start, end: end)
+        async let hrv = fetchDailyAverage(identifier: .heartRateVariabilitySDNN, unit: HKUnit.secondUnit(with: .milli), start: start, end: end)
+        async let restingHeartRate = fetchDailyAverage(identifier: .restingHeartRate, unit: HKUnit.count().unitDivided(by: .minute()), start: start, end: end)
+        async let respiratoryRate = fetchDailyAverage(identifier: .respiratoryRate, unit: HKUnit.count().unitDivided(by: .minute()), start: start, end: end)
+        async let oxygen = fetchDailyAverage(identifier: .oxygenSaturation, unit: .percent(), start: start, end: end)
+        async let wristTemperature = fetchLatestQuantityByDay(identifier: .appleSleepingWristTemperature, unit: .degreeCelsius(), start: start, end: end)
+        async let steps = fetchDailySum(identifier: .stepCount, unit: .count(), start: start, end: end)
+        async let activeEnergy = fetchDailySum(identifier: .activeEnergyBurned, unit: .kilocalorie(), start: start, end: end)
+        async let restingEnergy = fetchDailySum(identifier: .basalEnergyBurned, unit: .kilocalorie(), start: start, end: end)
+        async let exerciseTime = fetchDailySum(identifier: .appleExerciseTime, unit: .minute(), start: start, end: end)
+        async let vo2Max = fetchLatestQuantityByDay(identifier: .vo2Max, unit: HKUnit.literUnit(with: .milli).unitDivided(by: .gramUnit(with: .kilo).unitMultiplied(by: .minute())), start: start, end: end)
+        async let workouts = fetchWorkoutCountByDay(start: start, end: end)
+
+        let sleepByDay = try await sleep
+        let hrvByDay = try await hrv
+        let rhrByDay = try await restingHeartRate
+        let respiratoryByDay = try await respiratoryRate
+        let oxygenByDay = try await oxygen
+        let wristTemperatureByDay = try await wristTemperature
+        let stepsByDay = try await steps
+        let activeEnergyByDay = try await activeEnergy
+        let restingEnergyByDay = try await restingEnergy
+        let exerciseTimeByDay = try await exerciseTime
+        let vo2MaxByDay = try await vo2Max
+        let workoutsByDay = try await workouts
+
+        return (0..<days).compactMap { offset in
+            guard let day = calendar.date(byAdding: .day, value: offset, to: start) else { return nil }
+            let key = calendar.startOfDay(for: day)
+            let sleep = sleepByDay[key]
+            return DailyHealthInput(
+                dayStart: key,
+                sleepStart: sleep?.sleepStart,
+                sleepEnd: sleep?.sleepEnd,
+                sleepDurationMinutes: sleep?.sleepDurationMinutes,
+                timeInBedMinutes: sleep?.timeInBedMinutes,
+                hrvMs: hrvByDay[key],
+                restingHeartRate: rhrByDay[key],
+                respiratoryRate: respiratoryByDay[key],
+                oxygenSaturationPercent: oxygenByDay[key].map { $0 * 100 },
+                wristTemperatureCelsius: wristTemperatureByDay[key],
+                vo2Max: vo2MaxByDay[key],
+                steps: stepsByDay[key],
+                activeEnergyKcal: activeEnergyByDay[key],
+                restingEnergyKcal: restingEnergyByDay[key],
+                exerciseMinutes: exerciseTimeByDay[key],
+                workoutCount: workoutsByDay[key] ?? 0
+            )
+        }
+    }
+
     private func supportedBodyQuantityTypes() -> Set<HKQuantityType> {
         [
             HKObjectType.quantityType(forIdentifier: .bodyMass),
@@ -399,6 +476,33 @@ final class HealthKitService {
             HKObjectType.quantityType(forIdentifier: .dietaryIron),
             HKObjectType.quantityType(forIdentifier: .dietaryVitaminD),
             HKObjectType.quantityType(forIdentifier: .dietaryCholesterol),
+        ].compactMap(\.self).reduce(into: Set<HKQuantityType>()) { result, type in
+            result.insert(type)
+        }
+    }
+
+    private func supportedDailyHealthTypes() -> Set<HKObjectType> {
+        var result = Set<HKObjectType>()
+        result.formUnion(supportedDailyHealthQuantityTypes())
+        if let sleep = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) {
+            result.insert(sleep)
+        }
+        result.insert(HKObjectType.workoutType())
+        return result
+    }
+
+    private func supportedDailyHealthQuantityTypes() -> Set<HKQuantityType> {
+        [
+            HKObjectType.quantityType(forIdentifier: .heartRateVariabilitySDNN),
+            HKObjectType.quantityType(forIdentifier: .restingHeartRate),
+            HKObjectType.quantityType(forIdentifier: .respiratoryRate),
+            HKObjectType.quantityType(forIdentifier: .oxygenSaturation),
+            HKObjectType.quantityType(forIdentifier: .appleSleepingWristTemperature),
+            HKObjectType.quantityType(forIdentifier: .stepCount),
+            HKObjectType.quantityType(forIdentifier: .activeEnergyBurned),
+            HKObjectType.quantityType(forIdentifier: .basalEnergyBurned),
+            HKObjectType.quantityType(forIdentifier: .appleExerciseTime),
+            HKObjectType.quantityType(forIdentifier: .vo2Max),
         ].compactMap(\.self).reduce(into: Set<HKQuantityType>()) { result, type in
             result.insert(type)
         }
@@ -573,6 +677,155 @@ final class HealthKitService {
             healthStore.execute(query)
         }
     }
+
+    private func fetchDailyAverage(
+        identifier: HKQuantityTypeIdentifier,
+        unit: HKUnit,
+        start: Date,
+        end: Date
+    ) async throws -> [Date: Double] {
+        let samples = try await fetchQuantitySamples(identifier: identifier, unit: unit, start: start, end: end)
+        let grouped = Dictionary(grouping: samples) { Calendar.current.startOfDay(for: $0.date) }
+        return grouped.mapValues { values in
+            values.reduce(0) { $0 + $1.value } / Double(values.count)
+        }
+    }
+
+    private func fetchDailySum(
+        identifier: HKQuantityTypeIdentifier,
+        unit: HKUnit,
+        start: Date,
+        end: Date
+    ) async throws -> [Date: Double] {
+        let samples = try await fetchQuantitySamples(identifier: identifier, unit: unit, start: start, end: end)
+        let grouped = Dictionary(grouping: samples) { Calendar.current.startOfDay(for: $0.date) }
+        return grouped.mapValues { values in
+            values.reduce(0) { $0 + $1.value }
+        }
+    }
+
+    private func fetchLatestQuantityByDay(
+        identifier: HKQuantityTypeIdentifier,
+        unit: HKUnit,
+        start: Date,
+        end: Date,
+        lookbackDays: Int = 365
+    ) async throws -> [Date: Double] {
+        let calendar = Calendar.current
+        let lookbackStart = calendar.date(byAdding: .day, value: -lookbackDays, to: start) ?? start
+        let samples = try await fetchQuantitySamples(identifier: identifier, unit: unit, start: lookbackStart, end: end)
+            .sorted { $0.date < $1.date }
+        guard !samples.isEmpty else { return [:] }
+
+        var result: [Date: Double] = [:]
+        var latestValue: Double?
+        var sampleIndex = 0
+        let dayCount = calendar.dateComponents([.day], from: start, to: end).day ?? 0
+
+        for offset in 0..<dayCount {
+            guard let day = calendar.date(byAdding: .day, value: offset, to: start),
+                  let dayEnd = calendar.date(byAdding: .day, value: 1, to: day) else {
+                continue
+            }
+
+            while sampleIndex < samples.count, samples[sampleIndex].date < dayEnd {
+                latestValue = samples[sampleIndex].value
+                sampleIndex += 1
+            }
+
+            if let latestValue {
+                result[calendar.startOfDay(for: day)] = latestValue
+            }
+        }
+
+        return result
+    }
+
+    private func fetchQuantitySamples(
+        identifier: HKQuantityTypeIdentifier,
+        unit: HKUnit,
+        start: Date,
+        end: Date
+    ) async throws -> [HealthQuantityValue] {
+        guard let type = HKObjectType.quantityType(forIdentifier: identifier) else { return [] }
+        let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: [.strictStartDate])
+        let sort = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
+
+        return try await withCheckedThrowingContinuation { continuation in
+            let query = HKSampleQuery(
+                sampleType: type,
+                predicate: predicate,
+                limit: HKObjectQueryNoLimit,
+                sortDescriptors: [sort]
+            ) { _, samples, error in
+                if let error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+
+                let values = (samples as? [HKQuantitySample] ?? []).map {
+                    HealthQuantityValue(
+                        date: $0.startDate,
+                        value: $0.quantity.doubleValue(for: unit)
+                    )
+                }
+                continuation.resume(returning: values)
+            }
+            healthStore.execute(query)
+        }
+    }
+
+    private func fetchSleepByDay(start: Date, end: Date) async throws -> [Date: SleepAccumulator] {
+        guard let type = HKObjectType.categoryType(forIdentifier: .sleepAnalysis) else { return [:] }
+        let calendar = Calendar.current
+        let queryStart = calendar.date(byAdding: .day, value: -1, to: start) ?? start
+        let predicate = HKQuery.predicateForSamples(withStart: queryStart, end: end, options: [])
+        let sort = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
+
+        let samples: [HKCategorySample] = try await withCheckedThrowingContinuation { continuation in
+            let query = HKSampleQuery(
+                sampleType: type,
+                predicate: predicate,
+                limit: HKObjectQueryNoLimit,
+                sortDescriptors: [sort]
+            ) { _, samples, error in
+                if let error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+                continuation.resume(returning: samples as? [HKCategorySample] ?? [])
+            }
+            healthStore.execute(query)
+        }
+
+        let segments = samples.map {
+            SleepSegment(startDate: $0.startDate, endDate: $0.endDate, value: $0.value)
+        }
+        return SleepAggregator.byWakeDay(segments: segments, start: start, end: end, calendar: calendar)
+    }
+
+    private func fetchWorkoutCountByDay(start: Date, end: Date) async throws -> [Date: Int] {
+        let predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: [.strictStartDate])
+        let sort = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: true)
+        let workouts: [HKWorkout] = try await withCheckedThrowingContinuation { continuation in
+            let query = HKSampleQuery(
+                sampleType: HKObjectType.workoutType(),
+                predicate: predicate,
+                limit: HKObjectQueryNoLimit,
+                sortDescriptors: [sort]
+            ) { _, samples, error in
+                if let error {
+                    continuation.resume(throwing: error)
+                    return
+                }
+                continuation.resume(returning: samples as? [HKWorkout] ?? [])
+            }
+            healthStore.execute(query)
+        }
+
+        return Dictionary(grouping: workouts) { Calendar.current.startOfDay(for: $0.startDate) }
+            .mapValues(\.count)
+    }
 }
 
 enum HealthKitError: LocalizedError {
@@ -592,6 +845,152 @@ enum HealthKitError: LocalizedError {
 private struct HealthQuantityValue {
     let date: Date
     let value: Double
+}
+
+struct SleepSegment {
+    let startDate: Date
+    let endDate: Date
+    let value: Int
+}
+
+struct SleepAccumulator {
+    var sleepStart: Date?
+    var sleepEnd: Date?
+    var sleepDurationMinutes: Double = 0
+    var timeInBedMinutes: Double = 0
+    var intervalStart: Date?
+    var intervalEnd: Date?
+    private var asleepIntervals: [DateInterval] = []
+    private var inBedIntervals: [DateInterval] = []
+    private var sessionIntervals: [DateInterval] = []
+
+    mutating func add(_ sample: HKCategorySample) {
+        add(SleepSegment(startDate: sample.startDate, endDate: sample.endDate, value: sample.value))
+    }
+
+    mutating func add(_ segment: SleepSegment) {
+        let minutes = segment.endDate.timeIntervalSince(segment.startDate) / 60
+        guard minutes > 0 else { return }
+        let interval = DateInterval(start: segment.startDate, end: segment.endDate)
+
+        intervalStart = minDate(intervalStart, segment.startDate)
+        intervalEnd = maxDate(intervalEnd, segment.endDate)
+        sessionIntervals.append(interval)
+
+        if segment.value == HKCategoryValueSleepAnalysis.inBed.rawValue {
+            inBedIntervals.append(interval)
+        } else if Self.isAsleep(segment.value) {
+            asleepIntervals.append(interval)
+            sleepStart = minDate(sleepStart, segment.startDate)
+            sleepEnd = maxDate(sleepEnd, segment.endDate)
+        }
+    }
+
+    mutating func merge(_ other: SleepAccumulator) {
+        sleepStart = minDate(sleepStart, other.sleepStart)
+        sleepEnd = maxDate(sleepEnd, other.sleepEnd)
+        intervalStart = minDate(intervalStart, other.intervalStart)
+        intervalEnd = maxDate(intervalEnd, other.intervalEnd)
+        asleepIntervals.append(contentsOf: other.asleepIntervals)
+        inBedIntervals.append(contentsOf: other.inBedIntervals)
+        sessionIntervals.append(contentsOf: other.sessionIntervals)
+        normalizeTimeInBed()
+    }
+
+    mutating func normalizeTimeInBed() {
+        sleepDurationMinutes = Self.unionDurationMinutes(asleepIntervals)
+        let inBedMinutes = Self.unionDurationMinutes(inBedIntervals)
+        let sessionMinutes = Self.unionDurationMinutes(sessionIntervals)
+        timeInBedMinutes = max(inBedMinutes, sessionMinutes, sleepDurationMinutes)
+    }
+
+    static func isSleepRelated(_ value: Int) -> Bool {
+        value == HKCategoryValueSleepAnalysis.inBed.rawValue
+            || value == HKCategoryValueSleepAnalysis.awake.rawValue
+            || isAsleep(value)
+    }
+
+    static func isAsleep(_ value: Int) -> Bool {
+        value == HKCategoryValueSleepAnalysis.asleepUnspecified.rawValue
+            || value == HKCategoryValueSleepAnalysis.asleepCore.rawValue
+            || value == HKCategoryValueSleepAnalysis.asleepDeep.rawValue
+            || value == HKCategoryValueSleepAnalysis.asleepREM.rawValue
+    }
+
+    private static func unionDurationMinutes(_ intervals: [DateInterval]) -> Double {
+        let sorted = intervals.sorted { $0.start < $1.start }
+        var merged: [DateInterval] = []
+
+        for interval in sorted {
+            guard interval.duration > 0 else { continue }
+            guard let last = merged.last else {
+                merged.append(interval)
+                continue
+            }
+
+            if interval.start <= last.end {
+                merged[merged.count - 1] = DateInterval(start: last.start, end: max(last.end, interval.end))
+            } else {
+                merged.append(interval)
+            }
+        }
+
+        return merged.reduce(0) { $0 + $1.duration / 60 }
+    }
+
+    private func minDate(_ lhs: Date?, _ rhs: Date?) -> Date? {
+        guard let rhs else { return lhs }
+        guard let lhs else { return rhs }
+        return min(lhs, rhs)
+    }
+
+    private func maxDate(_ lhs: Date?, _ rhs: Date?) -> Date? {
+        guard let rhs else { return lhs }
+        guard let lhs else { return rhs }
+        return max(lhs, rhs)
+    }
+}
+
+enum SleepAggregator {
+    static func byWakeDay(
+        segments: [SleepSegment],
+        start: Date,
+        end: Date,
+        calendar: Calendar = .current
+    ) -> [Date: SleepAccumulator] {
+        var sessions: [SleepAccumulator] = []
+        let sorted = segments
+            .filter { SleepAccumulator.isSleepRelated($0.value) }
+            .sorted { $0.startDate < $1.startDate }
+
+        for segment in sorted {
+            if let last = sessions.indices.last,
+               let previousEnd = sessions[last].intervalEnd,
+               segment.startDate.timeIntervalSince(previousEnd) <= 3 * 60 * 60 {
+                sessions[last].add(segment)
+            } else {
+                var session = SleepAccumulator()
+                session.add(segment)
+                sessions.append(session)
+            }
+        }
+
+        return sessions.reduce(into: [Date: SleepAccumulator]()) { result, session in
+            guard let wakeDate = session.sleepEnd ?? session.intervalEnd else { return }
+            let wakeDay = calendar.startOfDay(for: wakeDate)
+            guard wakeDay >= start && wakeDay < end else { return }
+
+            var normalized = session
+            normalized.normalizeTimeInBed()
+            guard normalized.sleepDurationMinutes >= 90 || normalized.timeInBedMinutes >= 120 else { return }
+
+            if let existing = result[wakeDay],
+               existing.sleepDurationMinutes >= normalized.sleepDurationMinutes {
+                return
+            }
+            result[wakeDay] = normalized
+        }
+    }
 }
 
 private struct BodyAccumulator {

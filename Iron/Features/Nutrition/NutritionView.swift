@@ -11,6 +11,7 @@ struct NutritionView: View {
     @Environment(\.modelContext) private var modelContext
     @AppStorage(HealthKitPreferenceKeys.readNutrition) private var readHealthNutrition = false
     @AppStorage(HealthKitPreferenceKeys.writeNutrition) private var writeHealthNutrition = false
+    @AppStorage(GeminiNutritionPreferenceKeys.apiKey) private var geminiAPIKey = ""
 
     @Query(
         filter: #Predicate<NutritionEntry> { $0.deletedAt == nil },
@@ -39,17 +40,24 @@ struct NutritionView: View {
     @State private var isImportingHealthNutrition = false
     @State private var healthNutritionMessage: String?
     @State private var healthNutritionError: String?
+    @StateObject private var mealRecorder = MealAudioRecorder()
+    @State private var isAnalyzingVoiceMeal = false
+    @State private var recordingStartedAt: Date?
+    @State private var voiceMealMessage: String?
+    @State private var voiceMealError: String?
 
     private enum NutritionSheet: Identifiable {
         case addFood
         case editFood(NutritionEntry)
         case editTargets
+        case voiceDraft(MealDraft)
 
         var id: String {
             switch self {
             case .addFood: return "add-food"
             case .editFood(let entry): return "edit-food-\(entry.id)"
             case .editTargets: return "edit-targets"
+            case .voiceDraft(let draft): return "voice-draft-\(draft.id)"
             }
         }
     }
@@ -106,6 +114,111 @@ struct NutritionView: View {
                 }
                 .listRowInsets(EdgeInsets(top: 12, leading: 16, bottom: 12, trailing: 16))
 
+                Section("Health") {
+                    if HealthKitService.isAvailable {
+                        Button {
+                            Task { await importHealthNutrition() }
+                        } label: {
+                            Label(
+                                isImportingHealthNutrition ? "Importing nutrition..." : "Import Health nutrition",
+                                systemImage: "heart.fill"
+                            )
+                        }
+                        .disabled(isImportingHealthNutrition || !readHealthNutrition)
+
+                        if let healthNutritionMessage {
+                            Text(healthNutritionMessage)
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        } else if !readHealthNutrition {
+                            Text("Turn on Health nutrition reading in Settings to import calories and macros.")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                    } else {
+                        Label("Health is unavailable on this device.", systemImage: "heart.slash")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+
+                Section("Voice") {
+                    if mealRecorder.isRecording {
+                        VoiceMealStatusView(status: .recording(startedAt: recordingStartedAt ?? Date()))
+                            .listRowBackground(Color.red.opacity(0.08))
+                    } else if isAnalyzingVoiceMeal {
+                        VoiceMealStatusView(status: .analyzing)
+                            .listRowBackground(Color.blue.opacity(0.08))
+                    }
+
+                    Button {
+                        Task { await toggleVoiceMealRecording() }
+                    } label: {
+                        Label(
+                            voiceMealButtonTitle,
+                            systemImage: mealRecorder.isRecording ? "stop.circle.fill" : "mic.circle.fill"
+                        )
+                    }
+                    .disabled(isAnalyzingVoiceMeal || (!mealRecorder.isRecording && geminiAPIKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty))
+
+                    if isAnalyzingVoiceMeal {
+                        ProgressView("Analyzing meal...")
+                    }
+
+                    if let voiceMealMessage {
+                        Text(voiceMealMessage)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    } else if geminiAPIKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        Text("Add a Gemini API key in Settings to try spoken meal logging.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    if let voiceMealError {
+                        Text(voiceMealError)
+                            .font(.caption)
+                            .foregroundStyle(.red)
+                    }
+                }
+
+                Section("Food Log") {
+                    if selectedEntries.isEmpty {
+                        ContentUnavailableView(
+                            "No food logged",
+                            systemImage: "fork.knife",
+                            description: Text("Add foods to track calories and macros for this day.")
+                        )
+                    } else {
+                        ForEach(groupedMeals) { meal in
+                            MealGroupView(
+                                meal: meal,
+                                onEdit: { entry in activeSheet = .editFood(entry) },
+                                onDelete: deleteEntry
+                            )
+                        }
+                    }
+
+                    Button {
+                        activeSheet = .addFood
+                    } label: {
+                        Label("Add food", systemImage: "plus.circle.fill")
+                    }
+                }
+
+                Section("Targets") {
+                    LabeledContent("Goal", value: currentTarget.goal.label)
+                    LabeledContent("Calories", value: "\(formatNumber(currentTarget.calories)) kcal")
+                    LabeledContent(
+                        "Macros",
+                        value: "\(formatNumber(currentTarget.proteinG))P / \(formatNumber(currentTarget.carbsG))C / \(formatNumber(currentTarget.fatG))F"
+                    )
+                    Button {
+                        activeSheet = .editTargets
+                    } label: {
+                        Label("Edit targets", systemImage: "slider.horizontal.3")
+                    }
+                }
+
                 Section("Macros") {
                     MacroProgressRow(
                         title: "Calories",
@@ -158,71 +271,6 @@ struct NutritionView: View {
                         estimate: expenditureEstimate
                     )
                 }
-
-                Section("Health") {
-                    if HealthKitService.isAvailable {
-                        Button {
-                            Task { await importHealthNutrition() }
-                        } label: {
-                            Label(
-                                isImportingHealthNutrition ? "Importing nutrition..." : "Import Health nutrition",
-                                systemImage: "heart.fill"
-                            )
-                        }
-                        .disabled(isImportingHealthNutrition || !readHealthNutrition)
-
-                        if let healthNutritionMessage {
-                            Text(healthNutritionMessage)
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        } else if !readHealthNutrition {
-                            Text("Turn on Health nutrition reading in Settings to import calories and macros.")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-                        }
-                    } else {
-                        Label("Health is unavailable on this device.", systemImage: "heart.slash")
-                            .foregroundStyle(.secondary)
-                    }
-                }
-
-                Section("Food Log") {
-                    if selectedEntries.isEmpty {
-                        ContentUnavailableView(
-                            "No food logged",
-                            systemImage: "fork.knife",
-                            description: Text("Add foods to track calories and macros for this day.")
-                        )
-                    } else {
-                        ForEach(groupedMeals) { meal in
-                            MealGroupView(
-                                meal: meal,
-                                onEdit: { entry in activeSheet = .editFood(entry) },
-                                onDelete: deleteEntry
-                            )
-                        }
-                    }
-
-                    Button {
-                        activeSheet = .addFood
-                    } label: {
-                        Label("Add food", systemImage: "plus.circle.fill")
-                    }
-                }
-
-                Section("Targets") {
-                    LabeledContent("Goal", value: currentTarget.goal.label)
-                    LabeledContent("Calories", value: "\(formatNumber(currentTarget.calories)) kcal")
-                    LabeledContent(
-                        "Macros",
-                        value: "\(formatNumber(currentTarget.proteinG))P / \(formatNumber(currentTarget.carbsG))C / \(formatNumber(currentTarget.fatG))F"
-                    )
-                    Button {
-                        activeSheet = .editTargets
-                    } label: {
-                        Label("Edit targets", systemImage: "slider.horizontal.3")
-                    }
-                }
             }
             .navigationTitle("Nutrition")
             .toolbar {
@@ -232,6 +280,12 @@ struct NutritionView: View {
                     } label: {
                         Image(systemName: "target")
                     }
+                    Button {
+                        Task { await toggleVoiceMealRecording() }
+                    } label: {
+                        Image(systemName: mealRecorder.isRecording ? "stop.circle.fill" : "mic")
+                    }
+                    .disabled(isAnalyzingVoiceMeal || (!mealRecorder.isRecording && geminiAPIKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty))
                     Button {
                         activeSheet = .addFood
                     } label: {
@@ -261,8 +315,12 @@ struct NutritionView: View {
                     }
                 case .editTargets:
                     NutritionTargetEditor(target: currentTarget) { target in
-                        modelContext.insert(target)
-                        try? modelContext.save()
+                        saveTarget(target)
+                        activeSheet = nil
+                    }
+                case .voiceDraft(let draft):
+                    VoiceMealDraftReview(draft: draft, loggedAt: selectedDate) { entries in
+                        saveVoiceEntries(entries)
                         activeSheet = nil
                     }
                 }
@@ -284,6 +342,12 @@ struct NutritionView: View {
                 Text(healthNutritionError ?? "")
             }
         }
+    }
+
+    private var voiceMealButtonTitle: String {
+        if mealRecorder.isRecording { return "Stop recording" }
+        if isAnalyzingVoiceMeal { return "Analyzing meal..." }
+        return "Speak meal"
     }
 
     private var defaultTarget: NutritionTarget {
@@ -326,6 +390,90 @@ struct NutritionView: View {
     private func deleteEntry(_ entry: NutritionEntry) {
         entry.deletedAt = Date()
         try? modelContext.save()
+    }
+
+    private func saveTarget(_ target: NutritionTarget) {
+        if let existing = targets.first(where: { $0.id == target.id }) {
+            existing.effectiveDate = target.effectiveDate
+            existing.goal = target.goal
+            existing.calories = target.calories
+            existing.proteinG = target.proteinG
+            existing.carbsG = target.carbsG
+            existing.fatG = target.fatG
+            existing.notes = target.notes
+            existing.deletedAt = nil
+        } else {
+            modelContext.insert(target)
+        }
+        try? modelContext.save()
+    }
+
+    private func toggleVoiceMealRecording() async {
+        if mealRecorder.isRecording {
+            await finishVoiceMealRecording()
+        } else {
+            await startVoiceMealRecording()
+        }
+    }
+
+    private func startVoiceMealRecording() async {
+        voiceMealMessage = nil
+        voiceMealError = nil
+        do {
+            try await mealRecorder.start()
+            recordingStartedAt = Date()
+            voiceMealMessage = "Recording meal..."
+        } catch {
+            recordingStartedAt = nil
+            voiceMealError = error.localizedDescription
+        }
+    }
+
+    private func finishVoiceMealRecording() async {
+        let audioURL: URL
+        do {
+            audioURL = try mealRecorder.stop()
+        } catch {
+            voiceMealError = error.localizedDescription
+            recordingStartedAt = nil
+            return
+        }
+
+        recordingStartedAt = nil
+        isAnalyzingVoiceMeal = true
+        voiceMealMessage = nil
+        voiceMealError = nil
+        defer {
+            isAnalyzingVoiceMeal = false
+            try? FileManager.default.removeItem(at: audioURL)
+        }
+
+        do {
+            let draft = try await GeminiNutritionService.shared.draftMeal(
+                from: audioURL,
+                selectedDate: selectedDate,
+                apiKey: geminiAPIKey
+            )
+            activeSheet = .voiceDraft(draft)
+            voiceMealMessage = "Review Gemini's meal draft before logging."
+        } catch {
+            voiceMealError = error.localizedDescription
+        }
+    }
+
+    private func saveVoiceEntries(_ entries: [NutritionEntry]) {
+        for entry in entries {
+            modelContext.insert(entry)
+        }
+        try? modelContext.save()
+        if writeHealthNutrition {
+            for entry in entries {
+                let snapshot = HealthNutritionSnapshot(entry: entry)
+                Task {
+                    try? await HealthKitService.shared.saveNutrition(snapshot)
+                }
+            }
+        }
     }
 
     private func update(_ existing: NutritionEntry, with edited: NutritionEntry) {
@@ -840,6 +988,147 @@ private struct InsightPill: View {
     }
 }
 
+private struct VoiceMealStatusView: View {
+    enum Status {
+        case recording(startedAt: Date)
+        case analyzing
+    }
+
+    let status: Status
+
+    var body: some View {
+        switch status {
+        case .recording(let startedAt):
+            TimelineView(.periodic(from: startedAt, by: 1)) { context in
+                statusRow(
+                    icon: "record.circle.fill",
+                    title: "Recording meal",
+                    detail: elapsedText(from: startedAt, to: context.date),
+                    tint: .red,
+                    showsSpinner: false
+                )
+            }
+        case .analyzing:
+            statusRow(
+                icon: "sparkles",
+                title: "Analyzing meal",
+                detail: "Gemini is drafting the food log",
+                tint: .blue,
+                showsSpinner: true
+            )
+        }
+    }
+
+    private func statusRow(
+        icon: String,
+        title: String,
+        detail: String,
+        tint: Color,
+        showsSpinner: Bool
+    ) -> some View {
+        HStack(spacing: 12) {
+            Image(systemName: icon)
+                .font(.title3)
+                .foregroundStyle(tint)
+                .symbolEffect(.pulse, options: .repeating, isActive: true)
+                .frame(width: 28)
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.headline)
+                Text(detail)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .monospacedDigit()
+            }
+
+            Spacer()
+
+            if showsSpinner {
+                ProgressView()
+            }
+        }
+        .padding(.vertical, 6)
+        .accessibilityElement(children: .combine)
+    }
+
+    private func elapsedText(from start: Date, to end: Date) -> String {
+        let seconds = max(0, Int(end.timeIntervalSince(start)))
+        return String(format: "%d:%02d", seconds / 60, seconds % 60)
+    }
+}
+
+private struct VoiceMealDraftReview: View {
+    @Environment(\.dismiss) private var dismiss
+
+    let draft: MealDraft
+    let loggedAt: Date
+    let onSave: ([NutritionEntry]) -> Void
+    @State private var entries: [NutritionEntry]
+
+    init(draft: MealDraft, loggedAt: Date, onSave: @escaping ([NutritionEntry]) -> Void) {
+        self.draft = draft
+        self.loggedAt = loggedAt
+        self.onSave = onSave
+        _entries = State(initialValue: draft.nutritionEntries(loggedAt: loggedAt))
+    }
+
+    private var totals: NutritionTotals {
+        NutritionTotals(entries: entries)
+    }
+
+    var body: some View {
+        NavigationStack {
+            List {
+                if let transcript = draft.transcript.nilIfBlankForNutritionView {
+                    Section("Transcript") {
+                        Text(transcript)
+                            .font(.body)
+                    }
+                }
+
+                Section("Draft") {
+                    if entries.isEmpty {
+                        ContentUnavailableView(
+                            "No foods found",
+                            systemImage: "mic.slash",
+                            description: Text("Cancel and try speaking the meal again.")
+                        )
+                    } else {
+                        ForEach(entries) { entry in
+                            FoodEntryRow(entry: entry)
+                        }
+                    }
+                }
+
+                if !entries.isEmpty {
+                    Section("Totals") {
+                        LabeledContent("Calories", value: "\(formatNumber(totals.calories)) kcal")
+                        LabeledContent("Protein", value: "\(formatNumber(totals.proteinG)) g")
+                        LabeledContent("Carbs", value: "\(formatNumber(totals.carbsG)) g")
+                        LabeledContent("Fat", value: "\(formatNumber(totals.fatG)) g")
+                    }
+                }
+            }
+            .navigationTitle("Review Meal")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Cancel") { dismiss() }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Log") {
+                        onSave(entries)
+                        dismiss()
+                    }
+                    .bold()
+                    .disabled(entries.isEmpty)
+                }
+            }
+        }
+    }
+}
+
 private struct MealGroupView: View {
     let meal: MealGroup
     let onEdit: (NutritionEntry) -> Void
@@ -850,7 +1139,7 @@ private struct MealGroupView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 9) {
+        VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text(meal.name)
                     .font(.headline)
@@ -861,26 +1150,15 @@ private struct MealGroupView: View {
             }
 
             ForEach(meal.entries) { entry in
-                Button {
-                    onEdit(entry)
-                } label: {
-                    FoodEntryRow(entry: entry)
-                }
-                .buttonStyle(.plain)
-                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                        Button {
-                            onEdit(entry)
-                        } label: {
-                            Label("Edit", systemImage: "pencil")
-                        }
-                        .tint(.blue)
+                FoodEntryRow(
+                    entry: entry,
+                    onEdit: { onEdit(entry) },
+                    onDelete: { onDelete(entry) }
+                )
 
-                        Button(role: .destructive) {
-                            onDelete(entry)
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
-                    }
+                if entry.id != meal.entries.last?.id {
+                    Divider()
+                }
             }
         }
         .padding(.vertical, 3)
@@ -889,24 +1167,27 @@ private struct MealGroupView: View {
 
 private struct FoodEntryRow: View {
     let entry: NutritionEntry
+    var onEdit: (() -> Void)?
+    var onDelete: (() -> Void)?
 
     var body: some View {
-        HStack(alignment: .firstTextBaseline) {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(entry.foodName)
-                    .font(.body)
-                if let serving = entry.servingDescription, !serving.isEmpty {
-                    Text("\(formatNumber(entry.quantity)) \(entry.quantityUnit) · \(serving)")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                } else {
-                    Text("\(formatNumber(entry.quantity)) \(entry.quantityUnit)")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-                Text("\(formatNumber(entry.proteinG))P / \(formatNumber(entry.netCarbsG)) net C / \(formatNumber(entry.fatG))F")
-                    .font(.caption2.monospacedDigit())
+        HStack(alignment: .top, spacing: 12) {
+            VStack(alignment: .leading, spacing: 5) {
+                Text(entry.foodName.capitalized)
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(.primary)
+                    .lineLimit(2)
+
+                Text(servingText)
+                    .font(.caption)
                     .foregroundStyle(.secondary)
+
+                HStack(spacing: 8) {
+                    NutritionPill(text: "\(formatNumber(entry.proteinG))P")
+                    NutritionPill(text: "\(formatNumber(entry.netCarbsG)) net C")
+                    NutritionPill(text: "\(formatNumber(entry.fatG))F")
+                }
+
                 if entry.hasMicronutrients {
                     Text(micronutrientText)
                         .font(.caption2)
@@ -914,13 +1195,58 @@ private struct FoodEntryRow: View {
                         .lineLimit(1)
                 }
             }
-            Spacer()
-            Text("\(formatNumber(entry.calories))")
-                .font(.body.monospacedDigit())
-            Text("kcal")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+
+            Spacer(minLength: 8)
+
+            VStack(alignment: .trailing, spacing: 8) {
+                HStack(alignment: .firstTextBaseline, spacing: 4) {
+                    Text("\(formatNumber(entry.calories))")
+                        .font(.title3.weight(.semibold).monospacedDigit())
+                    Text("kcal")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+
+                if onEdit != nil || onDelete != nil {
+                    Menu {
+                        if let onEdit {
+                            Button {
+                                onEdit()
+                            } label: {
+                                Label("Edit", systemImage: "pencil")
+                            }
+                        }
+
+                        if let onDelete {
+                            Button(role: .destructive) {
+                                onDelete()
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .font(.title3)
+                            .foregroundStyle(.secondary)
+                            .frame(width: 36, height: 32, alignment: .trailing)
+                    }
+                    .accessibilityLabel("Food actions")
+                }
+            }
         }
+        .contentShape(Rectangle())
+        .onTapGesture {
+            onEdit?()
+        }
+    }
+
+    private var servingText: String {
+        let quantity = "\(formatNumber(entry.quantity)) \(entry.quantityUnit)"
+        guard let serving = entry.servingDescription?.trimmingCharacters(in: .whitespacesAndNewlines),
+              !serving.isEmpty else {
+            return quantity
+        }
+        return "\(quantity) · \(serving)"
     }
 
     private var micronutrientText: String {
@@ -930,6 +1256,19 @@ private struct FoodEntryRow: View {
             entry.potassiumMg.map { "K \(formatNumber($0))mg" },
             entry.ironMg.map { "Iron \(formatNumber($0))mg" },
         ].compactMap(\.self).joined(separator: " · ")
+    }
+}
+
+private struct NutritionPill: View {
+    let text: String
+
+    var body: some View {
+        Text(text)
+            .font(.caption2.monospacedDigit())
+            .foregroundStyle(.secondary)
+            .padding(.horizontal, 7)
+            .padding(.vertical, 3)
+            .background(.quaternary, in: Capsule())
     }
 }
 
@@ -1706,7 +2045,7 @@ private struct NutritionTargetEditor: View {
     init(target: NutritionTarget, onSave: @escaping (NutritionTarget) -> Void) {
         self.target = target
         self.onSave = onSave
-        _effectiveDate = State(initialValue: Date())
+        _effectiveDate = State(initialValue: target.effectiveDate)
         _goal = State(initialValue: target.goal)
         _calories = State(initialValue: formatNumber(target.calories))
         _protein = State(initialValue: formatNumber(target.proteinG))
@@ -1744,6 +2083,7 @@ private struct NutritionTargetEditor: View {
                     Button("Save") {
                         onSave(
                             NutritionTarget(
+                                id: target.id,
                                 effectiveDate: effectiveDate,
                                 goal: goal,
                                 calories: doubleValue(calories) ?? target.calories,
@@ -1940,6 +2280,13 @@ private func doubleValue(_ text: String) -> Double? {
 private func trimmed(_ text: String) -> String? {
     let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
     return trimmed.isEmpty ? nil : trimmed
+}
+
+private extension String {
+    var nilIfBlankForNutritionView: String? {
+        let trimmed = trimmingCharacters(in: .whitespacesAndNewlines)
+        return trimmed.isEmpty ? nil : trimmed
+    }
 }
 
 #Preview {

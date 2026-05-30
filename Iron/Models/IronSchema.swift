@@ -31,9 +31,19 @@ enum IronSchemaV2: VersionedSchema {
     }
 }
 
+enum IronSchemaV3: VersionedSchema {
+    static var versionIdentifier: Schema.Version { Schema.Version(1, 2, 0) }
+
+    static var models: [any PersistentModel.Type] {
+        IronSchemaV2.models + [
+            DailyHealthSnapshot.self,
+        ]
+    }
+}
+
 enum IronMigrationPlan: SchemaMigrationPlan {
     static var schemas: [any VersionedSchema.Type] {
-        [IronSchemaV2.self]
+        [IronSchemaV2.self, IronSchemaV3.self]
     }
 
     static var stages: [MigrationStage] { [] }
